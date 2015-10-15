@@ -1,0 +1,131 @@
+Calf
+Young Cow
+Cow
+Mature Cow
+Calf
+Young Cow
+Cow
+Mature Cow
+Calf
+Young Cow
+Cow
+Mature Cow
+Cow
+Mature Cow
+Jersey Calf
+Young Jersey Cow
+Jersey Cow
+Mature Jersey Cow
+Jersey Calf
+Young Jersey Cow
+Jersey Cow
+Mature Jersey Cow
+Lamb
+Young Sheep
+Sheep
+Mature Sheep
+Suffolk Lamb
+Young Suffolk Sheep
+Suffolk Sheep
+Mature Suffolk Sheep
+Chick
+Young Chicken
+Chicken
+Mature Chicken
+Silkie Chick
+Young Silkie Chicken
+Silkie Chicken
+Mature Silkie Chicken
+Araucana Chick
+Young Araucana Chk.
+Araucana Chicken
+Mature Araucana Chk.
+Alpaca Cria
+Young Alpaca
+Alpaca
+Mature Alpaca
+Brown Alpaca Cria
+Young Brown Alpaca
+Brown Alpaca
+Mature Brown Alpaca
+Llama Cria
+Young Llama
+Llama
+Mature Llama
+Camel
+Mature Camel
+Angora Rabbit
+Mature Angora Rabbit
+Gray Angora Rabbit
+Mtr. Gr. Angora Rabbit
+Zebu
+Mature Zebu
+Angora Goat
+Mature Angora Goat
+Brown Dog
+Fat Brown Dog
+White Dog
+Fat White Dog
+Black Dog
+Fat Black Dog
+Gray Dog
+Fat Gray Dog
+Brown Puppy
+Fat Brown Puppy
+Black&White Puppy
+Fat Black&White Puppy
+Black&Brown Puppy
+Fat Black&Brown Puppy
+Dark Brown Puppy
+Fat Dark Brown Puppy
+Gray Cat
+Fat Gray Cat
+Tuxedo Cat
+Fat Tuxedo Cat
+Tabby Cat
+Fat Tabby Cat
+Gray Tabby Cat
+Fat Gray Tabby Cat
+Hairy Brown Cat
+Fat Hairy Brown Cat
+Hairy Tuxedo Cat
+Fat Hairy Tuxedo Cat
+Hairy White Cat
+Fat Hairy White Cat
+Hairy Calico Cat
+Fat Hairy Calico Cat
+Monkey
+Golden Monkey
+Raccoon Dog
+Maroon Raccoon Dog
+Panda
+White Rabbit
+Black Rabbit
+Black Bear
+Brown Bear
+Polar Bear
+Brown Ermine
+White Ermine
+Brown Boar
+Black Boar
+Fox
+White Fox
+Sparrow
+Olive Sparrow
+Domestic Duck
+Duck
+Turtle
+Penguin
+White Sifaka
+Parrot
+Yellow Parrot
+Blue Parrot
+Shoebill
+Brown Horse
+White Horse
+Black Horse
+Red Horse
+Elephant
+Brown Elephant
+Buffalo
+Reindeer

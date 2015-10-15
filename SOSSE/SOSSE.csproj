@@ -1,0 +1,303 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{91070C36-A657-4C29-88E1-9CDACAF3F9D9}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SOSSE</RootNamespace>
+    <AssemblyName>SOSSE</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AnimalEditingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AnimalEditingForm.Designer.cs">
+      <DependentUpon>AnimalEditingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BalanceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BalanceForm.Designer.cs">
+      <DependentUpon>BalanceForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BlueprintEditingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BlueprintEditingForm.Designer.cs">
+      <DependentUpon>BlueprintEditingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConquestEditingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConquestEditingForm.Designer.cs">
+      <DependentUpon>ConquestEditingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EventEditingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EventEditingForm.Designer.cs">
+      <DependentUpon>EventEditingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GeneralEditingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GeneralEditingForm.Designer.cs">
+      <DependentUpon>GeneralEditingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Item.cs" />
+    <Compile Include="ItemEditingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ItemEditingForm.Designer.cs">
+      <DependentUpon>ItemEditingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NPCEditingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NPCEditingForm.Designer.cs">
+      <DependentUpon>NPCEditingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ObjectEditingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ObjectEditingForm.Designer.cs">
+      <DependentUpon>ObjectEditingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PatternEditingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PatternEditingForm.Designer.cs">
+      <DependentUpon>PatternEditingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RecipeEditingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RecipeEditingForm.Designer.cs">
+      <DependentUpon>RecipeEditingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShipLogEditingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShipLogEditingForm.Designer.cs">
+      <DependentUpon>ShipLogEditingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShopEditingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShopEditingForm.Designer.cs">
+      <DependentUpon>ShopEditingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Util.cs" />
+    <Compile Include="VendorEditingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VendorEditingForm.Designer.cs">
+      <DependentUpon>VendorEditingForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AnimalEditingForm.resx">
+      <DependentUpon>AnimalEditingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BalanceForm.resx">
+      <DependentUpon>BalanceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BlueprintEditingForm.resx">
+      <DependentUpon>BlueprintEditingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConquestEditingForm.resx">
+      <DependentUpon>ConquestEditingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EventEditingForm.resx">
+      <DependentUpon>EventEditingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GeneralEditingForm.resx">
+      <DependentUpon>GeneralEditingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemEditingForm.resx">
+      <DependentUpon>ItemEditingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NPCEditingForm.resx">
+      <DependentUpon>NPCEditingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ObjectEditingForm.resx">
+      <DependentUpon>ObjectEditingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PatternEditingForm.resx">
+      <DependentUpon>PatternEditingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="RecipeEditingForm.resx">
+      <DependentUpon>RecipeEditingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShipLogEditingForm.resx">
+      <DependentUpon>ShipLogEditingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShopEditingForm.resx">
+      <DependentUpon>ShopEditingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VendorEditingForm.resx">
+      <DependentUpon>VendorEditingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.4.5">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 4.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ItemName.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DSDecmp\DSDecmp.csproj">
+      <Project>{e6f419f9-d6b5-4be7-99bb-97c48c927ff3}</Project>
+      <Name>DSDecmp</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ObjectName.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PlanList.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PatternName.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PatternSetName.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RecipeSetName.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BlueprintSetName.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AnimalName.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ShopName.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TradingCategory.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ItemObjectCategory.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Month.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AnimalPersonality.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NPCName.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EventFlag.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

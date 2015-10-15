@@ -1,0 +1,4 @@
+Spr
+Sum
+Fal
+Win
