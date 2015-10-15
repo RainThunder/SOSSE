@@ -25,7 +25,7 @@ Usage
 
 Screenshot
 ==========
-![Main](http://imgur.com/APZ82ak)
+![Main](http://i.imgur.com/APZ82ak.png)
 
 Credits
 =======
