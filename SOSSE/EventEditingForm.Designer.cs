@@ -89,6 +89,7 @@
             this.Controls.Add(this.eventDataGridView);
             this.Name = "EventEditingForm";
             this.Text = "Event Editor (Preliminary)";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.EventEditingForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.eventDataGridView)).EndInit();
             this.ResumeLayout(false);
 

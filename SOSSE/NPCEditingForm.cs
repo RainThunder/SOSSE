@@ -17,6 +17,8 @@ namespace SOSSE
         public const int MaxNPC = 33;
         public bool DataLoaded { get; set; }
         public static string[] NPCNameList;
+        public static string[] FriendshipLevel = { "White", "Purple",
+            "Blue", "Green", "Yellow", "Pink", "Red" };
 
         public NPCEditingForm()
         {
@@ -26,6 +28,7 @@ namespace SOSSE
             Util.LoadNPCName();
 
             npcComboBox.Items.AddRange(NPCNameList);
+            levelComboBox.Items.AddRange(FriendshipLevel);
             npcComboBox.SelectedIndex = 0;
             // Implicitly call npcComboBox_SelectedIndexChanged
         }
@@ -47,13 +50,38 @@ namespace SOSSE
         {
             DataLoaded = false;
             int baseOffset = npcOffset + 84 * npcID;
-            friendshipNumericUpDown.Value = BitConverter.ToUInt16(MainForm.SaveData,
+            ushort friendship = BitConverter.ToUInt16(MainForm.SaveData,
                 baseOffset + 0x20);
+            friendshipNumericUpDown.Value = friendship;
+            levelComboBox.SelectedIndex = friendship / 10000;
             giftNumericUpDown.Value = BitConverter.ToUInt16(MainForm.SaveData,
                 baseOffset + 0x24);
             bestGiftNumericUpDown.Value = BitConverter.ToUInt16(MainForm.SaveData,
                 baseOffset + 0x26);
             intervalNumericUpDown.Value = MainForm.SaveData[baseOffset + 0x40];
+            DataLoaded = true;
+        }
+
+        private void npcComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (DataLoaded) saveCurrentNPC();
+            currentNPC = npcComboBox.SelectedIndex;
+            displayNPC(currentNPC);
+        }
+
+        private void friendshipNumericUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            if (!DataLoaded) return;
+            DataLoaded = false;
+            levelComboBox.SelectedIndex = (int)friendshipNumericUpDown.Value / 10000;
+            DataLoaded = true;
+        }
+
+        private void levelComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!DataLoaded) return;
+            DataLoaded = false;
+            friendshipNumericUpDown.Value = levelComboBox.SelectedIndex * 10000;
             DataLoaded = true;
         }
 
@@ -70,13 +98,6 @@ namespace SOSSE
             MainForm.SaveData[baseOffset + 0x26] = (byte)(bestGiftCount & 0xFF);
             MainForm.SaveData[baseOffset + 0x27] = (byte)((bestGiftCount >> 8) & 0xFF);
             MainForm.SaveData[baseOffset + 0x40] = (byte)(intervalNumericUpDown.Value);
-        }
-
-        private void npcComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (DataLoaded) saveCurrentNPC();
-            currentNPC = npcComboBox.SelectedIndex;
-            displayNPC(currentNPC);
         }
 
         private void NPCEditingForm_FormClosing(object sender, FormClosingEventArgs e)

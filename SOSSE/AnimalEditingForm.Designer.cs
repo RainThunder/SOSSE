@@ -647,7 +647,7 @@
             // pregnantCheckBox
             // 
             this.pregnantCheckBox.AutoSize = true;
-            this.pregnantCheckBox.Location = new System.Drawing.Point(88, 172);
+            this.pregnantCheckBox.Location = new System.Drawing.Point(92, 174);
             this.pregnantCheckBox.Name = "pregnantCheckBox";
             this.pregnantCheckBox.Size = new System.Drawing.Size(69, 17);
             this.pregnantCheckBox.TabIndex = 37;

@@ -44,14 +44,14 @@ namespace SOSSE
             eventButton.Enabled = true;
         }
 
-        private void closeAllForm()
+        private void closeAllHiddenForm()
         {
             if (itemEditingForm != null) itemEditingForm.Close();
         }
 
         private void openButton_Click(object sender, EventArgs e)
         {
-            closeAllForm();
+            closeAllHiddenForm();
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "Binary files (*.bin)|*.bin|All files (*.*)|*.*";
             if (openFileDialog.ShowDialog() != DialogResult.OK) return;

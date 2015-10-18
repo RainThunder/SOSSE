@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.blueprintDataGridView = new System.Windows.Forms.DataGridView();
-            this.allBlueprintButton = new System.Windows.Forms.Button();
-            this.blueprintSetDataGridView = new System.Windows.Forms.DataGridView();
-            this.helpLabel = new System.Windows.Forms.Label();
-            this.allBlueprintSetButton = new System.Windows.Forms.Button();
             this.blueprintColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.blueprintAvailableColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.allBlueprintButton = new System.Windows.Forms.Button();
+            this.blueprintSetDataGridView = new System.Windows.Forms.DataGridView();
             this.blueprintSetColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.blueprintSetAvailableColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.helpLabel = new System.Windows.Forms.Label();
+            this.allBlueprintSetButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.blueprintDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.blueprintSetDataGridView)).BeginInit();
             this.SuspendLayout();
@@ -61,6 +61,20 @@
             this.blueprintDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.blueprintDataGridView.Size = new System.Drawing.Size(212, 196);
             this.blueprintDataGridView.TabIndex = 0;
+            // 
+            // blueprintColumn
+            // 
+            this.blueprintColumn.HeaderText = "Blueprint";
+            this.blueprintColumn.Name = "blueprintColumn";
+            this.blueprintColumn.ReadOnly = true;
+            this.blueprintColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.blueprintColumn.Width = 160;
+            // 
+            // blueprintAvailableColumn
+            // 
+            this.blueprintAvailableColumn.HeaderText = "";
+            this.blueprintAvailableColumn.Name = "blueprintAvailableColumn";
+            this.blueprintAvailableColumn.Width = 32;
             // 
             // allBlueprintButton
             // 
@@ -93,6 +107,20 @@
             this.blueprintSetDataGridView.Size = new System.Drawing.Size(212, 196);
             this.blueprintSetDataGridView.TabIndex = 2;
             // 
+            // blueprintSetColumn
+            // 
+            this.blueprintSetColumn.HeaderText = "Blueprint Set";
+            this.blueprintSetColumn.Name = "blueprintSetColumn";
+            this.blueprintSetColumn.ReadOnly = true;
+            this.blueprintSetColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.blueprintSetColumn.Width = 160;
+            // 
+            // blueprintSetAvailableColumn
+            // 
+            this.blueprintSetAvailableColumn.HeaderText = "";
+            this.blueprintSetAvailableColumn.Name = "blueprintSetAvailableColumn";
+            this.blueprintSetAvailableColumn.Width = 32;
+            // 
             // helpLabel
             // 
             this.helpLabel.AutoSize = true;
@@ -113,34 +141,6 @@
             this.allBlueprintSetButton.UseVisualStyleBackColor = true;
             this.allBlueprintSetButton.Click += new System.EventHandler(this.allBlueprintSetButton_Click);
             // 
-            // blueprintColumn
-            // 
-            this.blueprintColumn.HeaderText = "Blueprint";
-            this.blueprintColumn.Name = "blueprintColumn";
-            this.blueprintColumn.ReadOnly = true;
-            this.blueprintColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.blueprintColumn.Width = 160;
-            // 
-            // blueprintAvailableColumn
-            // 
-            this.blueprintAvailableColumn.HeaderText = "";
-            this.blueprintAvailableColumn.Name = "blueprintAvailableColumn";
-            this.blueprintAvailableColumn.Width = 32;
-            // 
-            // blueprintSetColumn
-            // 
-            this.blueprintSetColumn.HeaderText = "Blueprint Set";
-            this.blueprintSetColumn.Name = "blueprintSetColumn";
-            this.blueprintSetColumn.ReadOnly = true;
-            this.blueprintSetColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.blueprintSetColumn.Width = 160;
-            // 
-            // blueprintSetAvailableColumn
-            // 
-            this.blueprintSetAvailableColumn.HeaderText = "";
-            this.blueprintSetAvailableColumn.Name = "blueprintSetAvailableColumn";
-            this.blueprintSetAvailableColumn.Width = 32;
-            // 
             // BlueprintEditingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -153,6 +153,7 @@
             this.Controls.Add(this.blueprintDataGridView);
             this.Name = "BlueprintEditingForm";
             this.Text = "Blueprint Editor";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.BlueprintEditingForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.blueprintDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.blueprintSetDataGridView)).EndInit();
             this.ResumeLayout(false);

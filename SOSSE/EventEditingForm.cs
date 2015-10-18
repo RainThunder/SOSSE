@@ -32,5 +32,10 @@ namespace SOSSE
                 row.Cells[1].Value = BitConverter.ToInt32(MainForm.SaveData, eventOffset + 4 * i);
             }
         }
+
+        private void EventEditingForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
+        }
     }
 }

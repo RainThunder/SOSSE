@@ -38,6 +38,8 @@
             this.bestGiftLabel = new System.Windows.Forms.Label();
             this.intervalLabel = new System.Windows.Forms.Label();
             this.intervalNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.levelComboBox = new System.Windows.Forms.ComboBox();
+            this.levelLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.friendshipNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.giftNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bestGiftNumericUpDown)).BeginInit();
@@ -72,8 +74,9 @@
             0,
             0});
             this.friendshipNumericUpDown.Name = "friendshipNumericUpDown";
-            this.friendshipNumericUpDown.Size = new System.Drawing.Size(98, 20);
+            this.friendshipNumericUpDown.Size = new System.Drawing.Size(60, 20);
             this.friendshipNumericUpDown.TabIndex = 2;
+            this.friendshipNumericUpDown.ValueChanged += new System.EventHandler(this.friendshipNumericUpDown_ValueChanged);
             // 
             // friendshipLabel
             // 
@@ -147,11 +150,32 @@
             this.intervalNumericUpDown.Size = new System.Drawing.Size(52, 20);
             this.intervalNumericUpDown.TabIndex = 9;
             // 
+            // levelComboBox
+            // 
+            this.levelComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.levelComboBox.FormattingEnabled = true;
+            this.levelComboBox.Location = new System.Drawing.Point(210, 39);
+            this.levelComboBox.Name = "levelComboBox";
+            this.levelComboBox.Size = new System.Drawing.Size(62, 21);
+            this.levelComboBox.TabIndex = 10;
+            this.levelComboBox.SelectedIndexChanged += new System.EventHandler(this.levelComboBox_SelectedIndexChanged);
+            // 
+            // levelLabel
+            // 
+            this.levelLabel.AutoSize = true;
+            this.levelLabel.Location = new System.Drawing.Point(165, 42);
+            this.levelLabel.Name = "levelLabel";
+            this.levelLabel.Size = new System.Drawing.Size(33, 13);
+            this.levelLabel.TabIndex = 11;
+            this.levelLabel.Text = "Level";
+            // 
             // NPCEditingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(284, 126);
+            this.Controls.Add(this.levelLabel);
+            this.Controls.Add(this.levelComboBox);
             this.Controls.Add(this.intervalNumericUpDown);
             this.Controls.Add(this.intervalLabel);
             this.Controls.Add(this.bestGiftLabel);
@@ -186,5 +210,7 @@
         private System.Windows.Forms.Label bestGiftLabel;
         private System.Windows.Forms.Label intervalLabel;
         private System.Windows.Forms.NumericUpDown intervalNumericUpDown;
+        private System.Windows.Forms.ComboBox levelComboBox;
+        private System.Windows.Forms.Label levelLabel;
     }
 }
