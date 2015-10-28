@@ -127,7 +127,8 @@ namespace SOSSE
             // Item
             localoffset = offset[shopIndex].Item;
             itemName.Items.Add("None");
-            itemName.Items.AddRange(Item.ItemNameList);
+            for (int i = 0; i < Item.MaxItem; i++)
+                itemName.Items.Add(Item.ItemNameList[ItemEditingForm.ItemSortedList[i]]);
             for (int i = 0; i < MaxShopItem; i++)
             {
                 var row = itemDataGridView.Rows[i];

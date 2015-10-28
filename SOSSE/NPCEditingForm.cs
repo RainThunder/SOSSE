@@ -62,13 +62,6 @@ namespace SOSSE
             DataLoaded = true;
         }
 
-        private void npcComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (DataLoaded) saveCurrentNPC();
-            currentNPC = npcComboBox.SelectedIndex;
-            displayNPC(currentNPC);
-        }
-
         private void friendshipNumericUpDown_ValueChanged(object sender, EventArgs e)
         {
             if (!DataLoaded) return;
@@ -98,6 +91,13 @@ namespace SOSSE
             MainForm.SaveData[baseOffset + 0x26] = (byte)(bestGiftCount & 0xFF);
             MainForm.SaveData[baseOffset + 0x27] = (byte)((bestGiftCount >> 8) & 0xFF);
             MainForm.SaveData[baseOffset + 0x40] = (byte)(intervalNumericUpDown.Value);
+        }
+
+        private void npcComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (DataLoaded) saveCurrentNPC();
+            currentNPC = npcComboBox.SelectedIndex;
+            displayNPC(currentNPC);
         }
 
         private void NPCEditingForm_FormClosing(object sender, FormClosingEventArgs e)

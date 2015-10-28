@@ -32,16 +32,15 @@ namespace SOSSE
                 itemBytes[0x3] = value;
             }
         }
-        public short Quality
+        public int Quality
         {
             get
             {
-                return BitConverter.ToInt16(itemBytes, 0x4);
+                return BitConverter.ToInt32(itemBytes, 0x4);
             }
             set
             {
-                itemBytes[0x4] = (byte)(value & 0xFF);
-                itemBytes[0x5] = (byte)(((ushort)value >> 8) & 0xFF);
+                Array.Copy(BitConverter.GetBytes(value), 0, itemBytes, 0x4, 4);
             }
         }
         public byte Quantity
@@ -71,9 +70,10 @@ namespace SOSSE
         }
 
         public const int MaxItem = 1956;
+        public const int MaxQuality = 300;
         public static string[] ItemNameList;
-        #region public static short[] BaseQuality
-        public static short[] BaseQuality = { -1, -1, -1, -1, -1, -1, -1, -1,
+        #region public static int[] BaseQuality
+        public static int[] BaseQuality = { -1, -1, -1, -1, -1, -1, -1, -1,
             -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
             -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
             -1, -1, -1, -1, -1, -1, -1, -1, -1, 0, 0, 0, -1, -1, 0, 0, 0, 0, -1,
@@ -182,7 +182,8 @@ namespace SOSSE
             0, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
             -1, -1, -1 };
         #endregion
-        #region public static byte[] ItemContainer
+        #region public static byte[] ItemContainer (unused)
+        /*
         public static byte[] ItemContainer = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -269,6 +270,7 @@ namespace SOSSE
             1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
             2, 2, 2, 4, 4, 4, 4, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+        */
         #endregion
         #region public static byte[] ItemCategory
         public static byte[] ItemCategory = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,

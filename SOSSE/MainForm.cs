@@ -59,6 +59,7 @@ namespace SOSSE
             // Open a decompressed save file, for testing purpose
             if (new FileInfo(openFileDialog.FileName).Length == 0x51FB8)
             {
+                Header = null;
                 SaveData = File.ReadAllBytes(openFileDialog.FileName);
                 enableButtons();
                 return;
@@ -208,6 +209,11 @@ namespace SOSSE
         private void eventButton_Click(object sender, EventArgs e)
         {
             new EventEditingForm().ShowDialog();
+        }
+
+        private void aboutButton_Click(object sender, EventArgs e)
+        {
+            new AboutBox().ShowDialog();
         }
     }
 }

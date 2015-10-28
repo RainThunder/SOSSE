@@ -45,6 +45,7 @@
             this.npcButton = new System.Windows.Forms.Button();
             this.generalButton = new System.Windows.Forms.Button();
             this.eventButton = new System.Windows.Forms.Button();
+            this.aboutButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // openButton
@@ -101,7 +102,7 @@
             // shipLogButton
             // 
             this.shipLogButton.Enabled = false;
-            this.shipLogButton.Location = new System.Drawing.Point(175, 49);
+            this.shipLogButton.Location = new System.Drawing.Point(174, 49);
             this.shipLogButton.Name = "shipLogButton";
             this.shipLogButton.Size = new System.Drawing.Size(75, 23);
             this.shipLogButton.TabIndex = 5;
@@ -134,7 +135,7 @@
             // conquestButton
             // 
             this.conquestButton.Enabled = false;
-            this.conquestButton.Location = new System.Drawing.Point(175, 78);
+            this.conquestButton.Location = new System.Drawing.Point(174, 78);
             this.conquestButton.Name = "conquestButton";
             this.conquestButton.Size = new System.Drawing.Size(75, 23);
             this.conquestButton.TabIndex = 8;
@@ -167,7 +168,7 @@
             // patternButton
             // 
             this.patternButton.Enabled = false;
-            this.patternButton.Location = new System.Drawing.Point(175, 107);
+            this.patternButton.Location = new System.Drawing.Point(174, 107);
             this.patternButton.Name = "patternButton";
             this.patternButton.Size = new System.Drawing.Size(75, 23);
             this.patternButton.TabIndex = 11;
@@ -231,11 +232,22 @@
             this.eventButton.Visible = false;
             this.eventButton.Click += new System.EventHandler(this.eventButton_Click);
             // 
+            // aboutButton
+            // 
+            this.aboutButton.Location = new System.Drawing.Point(174, 12);
+            this.aboutButton.Name = "aboutButton";
+            this.aboutButton.Size = new System.Drawing.Size(75, 23);
+            this.aboutButton.TabIndex = 17;
+            this.aboutButton.Text = "About";
+            this.aboutButton.UseVisualStyleBackColor = true;
+            this.aboutButton.Click += new System.EventHandler(this.aboutButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(261, 200);
+            this.Controls.Add(this.aboutButton);
             this.Controls.Add(this.eventButton);
             this.Controls.Add(this.generalButton);
             this.Controls.Add(this.npcButton);
@@ -278,6 +290,7 @@
         private System.Windows.Forms.Button npcButton;
         private System.Windows.Forms.Button generalButton;
         private System.Windows.Forms.Button eventButton;
+        private System.Windows.Forms.Button aboutButton;
     }
 }
 
