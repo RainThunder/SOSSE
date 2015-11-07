@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.openButton = new System.Windows.Forms.Button();
             this.itemButton = new System.Windows.Forms.Button();
             this.splitGroupBox = new System.Windows.Forms.GroupBox();
@@ -227,9 +228,8 @@
             this.eventButton.Name = "eventButton";
             this.eventButton.Size = new System.Drawing.Size(75, 23);
             this.eventButton.TabIndex = 16;
-            this.eventButton.Text = "Event";
+            this.eventButton.Text = "Flags";
             this.eventButton.UseVisualStyleBackColor = true;
-            this.eventButton.Visible = false;
             this.eventButton.Click += new System.EventHandler(this.eventButton_Click);
             // 
             // aboutButton
@@ -265,6 +265,7 @@
             this.Controls.Add(this.splitGroupBox);
             this.Controls.Add(this.itemButton);
             this.Controls.Add(this.openButton);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.Text = "SOSSE";
             this.ResumeLayout(false);

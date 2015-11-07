@@ -101,14 +101,14 @@
             // 
             // bestGiftNumericUpDown
             // 
-            this.bestGiftNumericUpDown.Location = new System.Drawing.Point(220, 66);
+            this.bestGiftNumericUpDown.Location = new System.Drawing.Point(210, 66);
             this.bestGiftNumericUpDown.Maximum = new decimal(new int[] {
             65535,
             0,
             0,
             0});
             this.bestGiftNumericUpDown.Name = "bestGiftNumericUpDown";
-            this.bestGiftNumericUpDown.Size = new System.Drawing.Size(52, 20);
+            this.bestGiftNumericUpDown.Size = new System.Drawing.Size(62, 20);
             this.bestGiftNumericUpDown.TabIndex = 5;
             // 
             // giftLabel
@@ -123,7 +123,7 @@
             // bestGiftLabel
             // 
             this.bestGiftLabel.AutoSize = true;
-            this.bestGiftLabel.Location = new System.Drawing.Point(167, 68);
+            this.bestGiftLabel.Location = new System.Drawing.Point(155, 68);
             this.bestGiftLabel.Name = "bestGiftLabel";
             this.bestGiftLabel.Size = new System.Drawing.Size(47, 13);
             this.bestGiftLabel.TabIndex = 7;
@@ -163,7 +163,7 @@
             // levelLabel
             // 
             this.levelLabel.AutoSize = true;
-            this.levelLabel.Location = new System.Drawing.Point(165, 42);
+            this.levelLabel.Location = new System.Drawing.Point(155, 42);
             this.levelLabel.Name = "levelLabel";
             this.levelLabel.Size = new System.Drawing.Size(33, 13);
             this.levelLabel.TabIndex = 11;

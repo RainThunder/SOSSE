@@ -115,7 +115,12 @@ namespace SOSSE
             patternDataGridView.Rows.Add(MaxShopPattern);
             animalDataGridView.Rows.Add(MaxShopAnimal);
             shopComboBox.Items.AddRange(ShopNameList);
-            shopComboBox.SelectedIndex = currentShop = 0;
+
+            itemName.Items.Add("None");
+            for (int i = 0; i < Item.MaxItem; i++)
+                itemName.Items.Add(Item.ItemNameList[ItemEditingForm.ItemSortedList[i]]);
+
+            shopComboBox.SelectedIndex = 0;
             //implicitly call shopComboBox_SelectedIndexChanged event
         }
 
@@ -126,9 +131,7 @@ namespace SOSSE
 
             // Item
             localoffset = offset[shopIndex].Item;
-            itemName.Items.Add("None");
-            for (int i = 0; i < Item.MaxItem; i++)
-                itemName.Items.Add(Item.ItemNameList[ItemEditingForm.ItemSortedList[i]]);
+            
             for (int i = 0; i < MaxShopItem; i++)
             {
                 var row = itemDataGridView.Rows[i];
@@ -136,7 +139,13 @@ namespace SOSSE
                 short itemIndex = BitConverter.ToInt16(MainForm.SaveData,
                     localoffset);
                 if (itemIndex == -1)
+                {
                     row.Cells[0].Value = "None";
+                    row.Cells[1].ReadOnly = true;
+                    row.Cells[1].Style.BackColor = Color.LightGray;
+                    row.Cells[2].ReadOnly = true;
+                    row.Cells[2].Style.BackColor = Color.LightGray;
+                }
                 else
                     row.Cells[0].Value = Item.ItemNameList[itemIndex];
 
@@ -293,7 +302,7 @@ namespace SOSSE
                 localoffset++;
             }
 
-            //Pattern
+            // Pattern
             localoffset = offset[currentShop].Pattern;
             for (int i = 0; i < pattern[currentShop].Length; i++)
             {
@@ -324,12 +333,7 @@ namespace SOSSE
 
         private void shopComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (!DataLoaded)
-            {
-                displayShopData(currentShop);
-                return;
-            }
-            saveCurrentShop();
+            if (DataLoaded) saveCurrentShop();
             currentShop = shopComboBox.SelectedIndex;
             displayShopData(currentShop);
         }

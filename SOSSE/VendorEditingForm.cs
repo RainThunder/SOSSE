@@ -12,6 +12,7 @@ namespace SOSSE
     public partial class VendorEditingForm : Form
     {
         private int vendorOffset = 0x448E8;
+        private int[] vendorFlagOffset = { 0x1294, 0x1660, 0x16C4 };
         private int currentCountry;
         private ulong currentMoney;
         private uint currentItemQuantity;
@@ -35,12 +36,22 @@ namespace SOSSE
         private void displayVendorData(int country)
         {
             DataLoaded = false;
+            // Money
             currentMoney = BitConverter.ToUInt64(MainForm.SaveData,
                 vendorOffset + 1616 * country);
             moneyTextBox.Text = currentMoney.ToString();
+            // Unlock
+            unlockedCheckBox.Checked = (BitConverter.ToInt32(MainForm.SaveData,
+                vendorFlagOffset[1] + 4 * country) != 0);
+            if (country == 0)
+                unlockedCheckBox.Enabled = false; // Silk Country
+            else
+                unlockedCheckBox.Enabled = true;
+            // Total item
             currentItemQuantity = BitConverter.ToUInt32(MainForm.SaveData,
                 vendorOffset + 1616 * country + 0x8);
             itemTextBox.Text = currentItemQuantity.ToString();
+            // Customer point
             currentCustomerPoint = BitConverter.ToUInt32(MainForm.SaveData,
                 vendorOffset + 1616 * country + 0xC);
             customerPointTextBox.Text = currentCustomerPoint.ToString();
@@ -53,6 +64,23 @@ namespace SOSSE
             ulong money = UInt64.Parse(moneyTextBox.Text);
             Array.Copy(BitConverter.GetBytes(money), 0, MainForm.SaveData,
                 vendorOffset + 1616 * currentCountry, 8);
+            if (currentCountry != 0)
+            {
+                if (unlockedCheckBox.Checked)
+                {
+                    byte[] unlocked = BitConverter.GetBytes((int)1);
+                    Array.Copy(unlocked, 0, MainForm.SaveData, vendorFlagOffset[0] + 4 * currentCountry, 4);
+                    Array.Copy(unlocked, 0, MainForm.SaveData, vendorFlagOffset[1] + 4 * currentCountry, 4);
+                    Array.Copy(unlocked, 0, MainForm.SaveData, vendorFlagOffset[2] + 4 * currentCountry, 4);
+                }
+                else
+                {
+                    byte[] locked = BitConverter.GetBytes((int)0);
+                    Array.Copy(locked, 0, MainForm.SaveData, vendorFlagOffset[0] + 4 * currentCountry, 4);
+                    Array.Copy(locked, 0, MainForm.SaveData, vendorFlagOffset[1] + 4 * currentCountry, 4);
+                    Array.Copy(locked, 0, MainForm.SaveData, vendorFlagOffset[2] + 4 * currentCountry, 4);
+                }
+            }
             int itemQuantity = Int32.Parse(itemTextBox.Text);
             Array.Copy(BitConverter.GetBytes(itemQuantity), 0, MainForm.SaveData,
                 vendorOffset + 1616 * currentCountry + 0x8, 4);

@@ -273,6 +273,7 @@
             this.patternTabPage.Controls.Add(this.patternDataGridView);
             this.patternTabPage.Location = new System.Drawing.Point(4, 22);
             this.patternTabPage.Name = "patternTabPage";
+            this.patternTabPage.Padding = new System.Windows.Forms.Padding(3);
             this.patternTabPage.Size = new System.Drawing.Size(353, 185);
             this.patternTabPage.TabIndex = 3;
             this.patternTabPage.Text = "Pattern Set";
@@ -325,6 +326,7 @@
             this.animalTabPage.Controls.Add(this.animalDataGridView);
             this.animalTabPage.Location = new System.Drawing.Point(4, 22);
             this.animalTabPage.Name = "animalTabPage";
+            this.animalTabPage.Padding = new System.Windows.Forms.Padding(3);
             this.animalTabPage.Size = new System.Drawing.Size(353, 185);
             this.animalTabPage.TabIndex = 4;
             this.animalTabPage.Text = "Animal";

@@ -268,66 +268,21 @@ namespace SOSSE.Properties {
         ///60
         ///61
         ///62
-        ///63
-        ///64
-        ///65
-        ///66
-        ///67
-        ///68
-        ///69
-        ///70
-        ///71
-        ///72
+        ///63 - ChildLooksType
+        ///64 - ChildGrowth
+        ///65 - ChildOkurumiDays
+        ///66 - ChildHaiHaiDays
+        ///67 - MarriageDays
+        ///68 - PregnancyDays
+        ///69 - WeddingDays
+        ///70 - WeddingPlanNo
+        ///71 - WeddingDressType
+        ///72 - WeddingPlanSelect
         ///73
-        ///74
-        ///75
-        ///76
-        ///77
-        ///78
-        ///79
-        ///80
-        ///81
-        ///82
-        ///83
-        ///84
-        ///85
-        ///86
-        ///87
-        ///88
-        ///89
-        ///90
-        ///91
-        ///92
-        ///93
-        ///94
-        ///95
-        ///96
-        ///97
-        ///98
-        ///99
-        ///100
-        ///101
-        ///102
-        ///OFFERING_COUNT
-        ///104
-        ///105
-        ///106
-        ///107
-        ///108
-        ///109
-        ///110
-        ///111
-        ///112
-        ///113
-        ///114
-        ///115
-        ///116
-        ///117
-        ///118
-        ///119
-        ///120
-        ///121
-        ///122        /// [rest of string was truncated]&quot;;.
+        ///74 - TRADE_DEVELOP
+        ///75 - GAME_CLEAR
+        ///76 - GROW_UP_EDDA
+        ///77 -  [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string EventFlag {
             get {

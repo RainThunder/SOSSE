@@ -33,9 +33,35 @@ namespace SOSSE
             }
         }
 
+        private void dump()
+        {
+            string[] lines = new string[MaxEvent];
+            for (int i = 0; i < MaxEvent; i++)
+            {
+                lines[i] = BitConverter.ToInt32(MainForm.SaveData, eventOffset + 4 * i).ToString();
+            }
+            System.IO.File.WriteAllLines("EventFlag.txt", lines);
+        }
+
+        /// <summary>
+        /// Save event data to main save file
+        /// </summary>
+        public void SaveEvent()
+        {
+            for (int i = 0; i < MaxEvent; i++)
+            {
+                int value;
+                bool isValid = Int32.TryParse(eventDataGridView.Rows[i]
+                    .Cells[1].Value.ToString(), out value);
+                if (isValid)
+                    Array.Copy(BitConverter.GetBytes(value), 0, MainForm.SaveData,
+                        eventOffset + 4 * i, 4);
+            }
+        }
+
         private void EventEditingForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-
+            SaveEvent();
         }
     }
 }

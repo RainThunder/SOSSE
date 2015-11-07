@@ -44,11 +44,15 @@
             this.minuteNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.hourLabel = new System.Windows.Forms.Label();
             this.minuteLabel = new System.Windows.Forms.Label();
+            this.difficultyGroupBox = new System.Windows.Forms.GroupBox();
+            this.originalRadioButton = new System.Windows.Forms.RadioButton();
+            this.seedlingRadioButton = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.healthNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.staminaNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.yearNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hourNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.minuteNumericUpDown)).BeginInit();
+            this.difficultyGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // healthNumericUpDown
@@ -126,9 +130,19 @@
             0,
             0,
             0});
+            this.yearNumericUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.yearNumericUpDown.Name = "yearNumericUpDown";
             this.yearNumericUpDown.Size = new System.Drawing.Size(37, 20);
             this.yearNumericUpDown.TabIndex = 8;
+            this.yearNumericUpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // monthLabel
             // 
@@ -199,11 +213,45 @@
             this.minuteLabel.TabIndex = 15;
             this.minuteLabel.Text = "Minute";
             // 
+            // difficultyGroupBox
+            // 
+            this.difficultyGroupBox.Controls.Add(this.originalRadioButton);
+            this.difficultyGroupBox.Controls.Add(this.seedlingRadioButton);
+            this.difficultyGroupBox.Location = new System.Drawing.Point(12, 120);
+            this.difficultyGroupBox.Name = "difficultyGroupBox";
+            this.difficultyGroupBox.Size = new System.Drawing.Size(260, 42);
+            this.difficultyGroupBox.TabIndex = 16;
+            this.difficultyGroupBox.TabStop = false;
+            this.difficultyGroupBox.Text = "Difficulty";
+            // 
+            // originalRadioButton
+            // 
+            this.originalRadioButton.AutoSize = true;
+            this.originalRadioButton.Location = new System.Drawing.Point(138, 19);
+            this.originalRadioButton.Name = "originalRadioButton";
+            this.originalRadioButton.Size = new System.Drawing.Size(60, 17);
+            this.originalRadioButton.TabIndex = 1;
+            this.originalRadioButton.TabStop = true;
+            this.originalRadioButton.Text = "Original";
+            this.originalRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // seedlingRadioButton
+            // 
+            this.seedlingRadioButton.AutoSize = true;
+            this.seedlingRadioButton.Location = new System.Drawing.Point(6, 19);
+            this.seedlingRadioButton.Name = "seedlingRadioButton";
+            this.seedlingRadioButton.Size = new System.Drawing.Size(66, 17);
+            this.seedlingRadioButton.TabIndex = 0;
+            this.seedlingRadioButton.TabStop = true;
+            this.seedlingRadioButton.Text = "Seedling";
+            this.seedlingRadioButton.UseVisualStyleBackColor = true;
+            // 
             // GeneralEditingForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 124);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.ClientSize = new System.Drawing.Size(284, 174);
+            this.Controls.Add(this.difficultyGroupBox);
             this.Controls.Add(this.minuteLabel);
             this.Controls.Add(this.hourLabel);
             this.Controls.Add(this.minuteNumericUpDown);
@@ -221,6 +269,7 @@
             this.Controls.Add(this.staminaNumericUpDown);
             this.Controls.Add(this.healthNumericUpDown);
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "GeneralEditingForm";
             this.Text = "GeneralEditingForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GeneralEditingForm_FormClosing);
@@ -229,6 +278,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.yearNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.hourNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.minuteNumericUpDown)).EndInit();
+            this.difficultyGroupBox.ResumeLayout(false);
+            this.difficultyGroupBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -252,5 +303,8 @@
         private System.Windows.Forms.NumericUpDown minuteNumericUpDown;
         private System.Windows.Forms.Label hourLabel;
         private System.Windows.Forms.Label minuteLabel;
+        private System.Windows.Forms.GroupBox difficultyGroupBox;
+        private System.Windows.Forms.RadioButton originalRadioButton;
+        private System.Windows.Forms.RadioButton seedlingRadioButton;
     }
 }

@@ -11,6 +11,7 @@ namespace SOSSE
 {
     public partial class GeneralEditingForm : Form
     {
+        private const int difficultyOffset = 0x1914;
         private ulong currentMoney;
 
         public static string[] Month;
@@ -35,6 +36,10 @@ namespace SOSSE
             moneyTextBox.Text = BitConverter.ToUInt64(MainForm.SaveData, 0x98).ToString();
             healthNumericUpDown.Value = BitConverter.ToInt16(MainForm.SaveData, 0xA0);
             staminaNumericUpDown.Value = BitConverter.ToInt16(MainForm.SaveData, 0xA4);
+            if (MainForm.SaveData[difficultyOffset] == 1)
+                seedlingRadioButton.Checked = true;
+            else
+                originalRadioButton.Checked = true;
         }
 
         private void moneyTextBox_TextChanged(object sender, EventArgs e)
@@ -55,27 +60,37 @@ namespace SOSSE
         /// </summary>
         public void SaveGeneral()
         {
+            // Date
             ushort year = (ushort)(yearNumericUpDown.Value - 1);
             MainForm.SaveData[0x00] = (byte)(year & 0xFF);
             MainForm.SaveData[0x01] = (byte)((year >> 8) & 0xFF);
             MainForm.SaveData[0x02] = (byte)monthComboBox.SelectedIndex;
             MainForm.SaveData[0x03] = (byte)dayComboBox.SelectedIndex;
+            // Time
             short hour = (short)(hourNumericUpDown.Value - 6);
             MainForm.SaveData[0x20] = (byte)(hour & 0xFF);
             MainForm.SaveData[0x21] = (byte)((hour >> 8) & 0xFF);
             short minute = (short)(minuteNumericUpDown.Value);
             MainForm.SaveData[0x22] = (byte)(minute & 0xFF);
             MainForm.SaveData[0x23] = (byte)((minute >> 8) & 0xFF);
+            // Money
             ulong money;
             bool isValid = UInt64.TryParse(moneyTextBox.Text, out money);
             if (isValid)
                 Array.Copy(BitConverter.GetBytes(money), 0, MainForm.SaveData, 0x98, 8);
+            // Health
             ushort health = (ushort)healthNumericUpDown.Value;
             MainForm.SaveData[0xA0] = (byte)(health & 0xFF);
             MainForm.SaveData[0xA1] = (byte)((health >> 8) & 0xFF);
+            // Stamina
             ushort stamina = (ushort)staminaNumericUpDown.Value;
             MainForm.SaveData[0xA4] = (byte)(stamina & 0xFF);
             MainForm.SaveData[0xA5] = (byte)((stamina >> 8) & 0xFF);
+            // Difficulty
+            if (seedlingRadioButton.Checked)
+                MainForm.SaveData[difficultyOffset] = 1;
+            else
+                MainForm.SaveData[difficultyOffset] = 0;
         }
 
         private void GeneralEditingForm_FormClosing(object sender, FormClosingEventArgs e)

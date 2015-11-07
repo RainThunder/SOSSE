@@ -5,11 +5,11 @@ using System.Text;
 
 namespace SOSSE
 {
-    class Item : IComparable
+    public class Item : IComparable
     {
         private byte[] itemBytes;
 
-        public ushort ItemIndex
+        public ushort Index
         {
             get
             {
@@ -182,8 +182,7 @@ namespace SOSSE
             0, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
             -1, -1, -1 };
         #endregion
-        #region public static byte[] ItemContainer (unused)
-        /*
+        #region public static byte[] ItemContainer
         public static byte[] ItemContainer = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -270,7 +269,6 @@ namespace SOSSE
             1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
             2, 2, 2, 4, 4, 4, 4, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-        */
         #endregion
         #region public static byte[] ItemCategory
         public static byte[] ItemCategory = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -384,7 +382,7 @@ namespace SOSSE
         public Item(ushort index)
         {
             itemBytes = new Item().ToArray();
-            ItemIndex = index;
+            Index = index;
             Quality = BaseQuality[index];
             Quantity = 1;
         }
@@ -404,8 +402,8 @@ namespace SOSSE
         /// <returns>Item name</returns>
         public string GetItemName()
         {
-            if ((ItemIndex > 0) && (ItemIndex < 1957))
-                return ItemNameList[ItemIndex];
+            if ((Index > 0) && (Index < 1957))
+                return ItemNameList[Index];
             else
                 return "None";
         }
@@ -428,7 +426,7 @@ namespace SOSSE
         public int CompareTo(object itemObject)
         {
             Item item = (Item)itemObject;
-            if (this.ItemIndex == item.ItemIndex)
+            if (this.Index == item.Index)
             {
                 if (this.Quality == item.Quality)
                     return -this.Quantity.CompareTo(item.Quantity);
@@ -436,7 +434,7 @@ namespace SOSSE
                     return -this.Quality.CompareTo(item.Quality);
             }
             else
-                return this.ItemIndex.CompareTo(item.ItemIndex);
+                return this.Index.CompareTo(item.Index);
         }
     }
 }

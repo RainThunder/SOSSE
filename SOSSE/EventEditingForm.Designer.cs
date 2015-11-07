@@ -31,7 +31,6 @@
             this.eventDataGridView = new System.Windows.Forms.DataGridView();
             this.flagColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.valueColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.researchButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.eventDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,7 +51,7 @@
             this.eventDataGridView.RowHeadersVisible = false;
             this.eventDataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.eventDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.eventDataGridView.Size = new System.Drawing.Size(259, 208);
+            this.eventDataGridView.Size = new System.Drawing.Size(484, 237);
             this.eventDataGridView.TabIndex = 0;
             // 
             // flagColumn
@@ -61,34 +60,26 @@
             this.flagColumn.Name = "flagColumn";
             this.flagColumn.ReadOnly = true;
             this.flagColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.flagColumn.Width = 160;
+            this.flagColumn.Width = 400;
             // 
             // valueColumn
             // 
-            this.valueColumn.HeaderText = "";
+            this.valueColumn.HeaderText = "Value";
             this.valueColumn.Name = "valueColumn";
             this.valueColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.valueColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.valueColumn.Width = 64;
             // 
-            // researchButton
-            // 
-            this.researchButton.Location = new System.Drawing.Point(186, 227);
-            this.researchButton.Name = "researchButton";
-            this.researchButton.Size = new System.Drawing.Size(86, 23);
-            this.researchButton.TabIndex = 1;
-            this.researchButton.Text = "Research...";
-            this.researchButton.UseVisualStyleBackColor = true;
-            // 
             // EventEditingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(284, 262);
-            this.Controls.Add(this.researchButton);
+            this.ClientSize = new System.Drawing.Size(509, 262);
             this.Controls.Add(this.eventDataGridView);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "EventEditingForm";
-            this.Text = "Event Editor (Preliminary)";
+            this.Text = "Event Flag Editor (Detailed)";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.EventEditingForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.eventDataGridView)).EndInit();
             this.ResumeLayout(false);
@@ -100,6 +91,5 @@
         private System.Windows.Forms.DataGridView eventDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn flagColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn valueColumn;
-        private System.Windows.Forms.Button researchButton;
     }
 }
