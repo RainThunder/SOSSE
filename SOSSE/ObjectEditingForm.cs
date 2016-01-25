@@ -132,7 +132,7 @@ namespace SOSSE
                 {
                     objectDataGridView.Rows[i].Cells[0].Value = "None";
                     objectDataGridView.Rows[i].Cells[1].ReadOnly = true;
-                    objectDataGridView.Rows[i].Cells[1].Style.BackColor = Color.LightGray;
+                    objectDataGridView.Rows[i].Cells[1].Style = MainForm.GrayCellStyle;
                 }
                 else
                     objectDataGridView.Rows[i].Cells[0].Value = ObjectNameList[objectIndex];
@@ -172,15 +172,15 @@ namespace SOSSE
                 {
                     objectDataGridView.Rows[e.RowIndex].Cells[1].Value = 1;
                     objectDataGridView.Rows[e.RowIndex].Cells[1].ReadOnly = false;
-                    objectDataGridView.Rows[e.RowIndex].Cells[1].Style.BackColor =
-                        objectDataGridView.DefaultCellStyle.BackColor;
+                    objectDataGridView.Rows[e.RowIndex].Cells[1].Style =
+                        objectDataGridView.DefaultCellStyle;
                 }
                 else
                 {
                     objectDataGridView.Rows[e.RowIndex].Cells[1].Value = 0;
                     objectDataGridView.Rows[e.RowIndex].Cells[1].ReadOnly = true;
-                    objectDataGridView.Rows[e.RowIndex].Cells[1].Style.BackColor =
-                        Color.LightGray;
+                    objectDataGridView.Rows[e.RowIndex].Cells[1].Style =
+                        MainForm.GrayCellStyle;
                 }
             }
         }

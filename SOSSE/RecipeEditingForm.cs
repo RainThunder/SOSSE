@@ -77,9 +77,9 @@ namespace SOSSE
                 if (!unlocked)
                 {
                     row.Cells[2].ReadOnly = true;
-                    row.Cells[2].Style.BackColor = Color.LightGray;
+                    row.Cells[2].Style = MainForm.GrayCellStyle;
                     row.Cells[3].ReadOnly = true;
-                    row.Cells[3].Style.BackColor = Color.LightGray;
+                    row.Cells[3].Style = MainForm.GrayCellStyle;
                 }
                 row.Cells[2].Value = BitConverter.ToUInt16(MainForm.SaveData,
                     recipeOffset + 6 * i + 0x2);
@@ -143,16 +143,16 @@ namespace SOSSE
                 if ((bool)row.Cells[1].Value)
                 {
                     row.Cells[2].ReadOnly = false;
-                    row.Cells[2].Style.BackColor = recipeDataGridView.DefaultCellStyle.BackColor;
+                    row.Cells[2].Style = recipeDataGridView.DefaultCellStyle;
                     row.Cells[3].ReadOnly = false;
-                    row.Cells[3].Style.BackColor = recipeDataGridView.DefaultCellStyle.BackColor;
+                    row.Cells[3].Style = recipeDataGridView.DefaultCellStyle;
                 }
                 else
                 {
                     row.Cells[2].ReadOnly = true;
-                    row.Cells[2].Style.BackColor = Color.LightGray;
+                    row.Cells[2].Style = MainForm.GrayCellStyle;
                     row.Cells[3].ReadOnly = true;
-                    row.Cells[3].Style.BackColor = Color.LightGray;
+                    row.Cells[3].Style = MainForm.GrayCellStyle;
                 }
             }
         }
@@ -166,9 +166,9 @@ namespace SOSSE
                 {
                     row.Cells[1].Value = true;
                     row.Cells[2].ReadOnly = false;
-                    row.Cells[2].Style.BackColor = recipeDataGridView.DefaultCellStyle.BackColor;
+                    row.Cells[2].Style = recipeDataGridView.DefaultCellStyle;
                     row.Cells[3].ReadOnly = false;
-                    row.Cells[3].Style.BackColor = recipeDataGridView.DefaultCellStyle.BackColor;
+                    row.Cells[3].Style = recipeDataGridView.DefaultCellStyle;
                 }
             }
         }

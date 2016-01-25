@@ -142,9 +142,9 @@ namespace SOSSE
                 {
                     row.Cells[0].Value = "None";
                     row.Cells[1].ReadOnly = true;
-                    row.Cells[1].Style.BackColor = Color.LightGray;
+                    row.Cells[1].Style = MainForm.GrayCellStyle;
                     row.Cells[2].ReadOnly = true;
-                    row.Cells[2].Style.BackColor = Color.LightGray;
+                    row.Cells[2].Style = MainForm.GrayCellStyle;
                 }
                 else
                     row.Cells[0].Value = Item.ItemNameList[itemIndex];
@@ -157,12 +157,12 @@ namespace SOSSE
                 if (!avail)
                 {
                     row.Cells[2].ReadOnly = true;
-                    row.Cells[2].Style.BackColor = Color.LightGray;
+                    row.Cells[2].Style = MainForm.GrayCellStyle;
                 }
                 else
                 {
                     row.Cells[2].ReadOnly = false;
-                    row.Cells[2].Style.BackColor = itemDataGridView.DefaultCellStyle.BackColor;
+                    row.Cells[2].Style = itemDataGridView.DefaultCellStyle;
                 }
 
                 localoffset += 0x6;
@@ -363,16 +363,16 @@ namespace SOSSE
                 if (itemIndex == -1)
                 {
                     row.Cells[1].ReadOnly = true;
-                    row.Cells[1].Style.BackColor = Color.LightGray;
+                    row.Cells[1].Style = MainForm.GrayCellStyle;
                     row.Cells[2].ReadOnly = true;
-                    row.Cells[2].Style.BackColor = Color.LightGray;
+                    row.Cells[2].Style = MainForm.GrayCellStyle;
                 }
                 else
                 {
                     row.Cells[1].ReadOnly = false;
-                    row.Cells[1].Style.BackColor = itemDataGridView.DefaultCellStyle.BackColor;
+                    row.Cells[1].Style = itemDataGridView.DefaultCellStyle;
                     row.Cells[2].ReadOnly = false;
-                    row.Cells[2].Style.BackColor = itemDataGridView.DefaultCellStyle.BackColor;
+                    row.Cells[2].Style = itemDataGridView.DefaultCellStyle;
                 }
             }
         }
