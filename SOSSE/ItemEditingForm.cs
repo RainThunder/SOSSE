@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.IO;
@@ -12,20 +10,19 @@ namespace SOSSE
 {
     public partial class ItemEditingForm : Form
     {
-        private Item[] bagItems;
-        private Item[] toolboxItems;
-        private Item[] fridgeItems;
-        private Item[] storageItems;
-        private Item[] materialItems;
-        private Item[] wardrobeItems;
-        private const int bagItemOffset = 0x1A24;
-        private const int toolboxItemOffset = 0x1ED4;
-        private const int fridgeItemOffset = 0x4DA8;
-        private const int storageItemOffset = 0x7C7C;
-        private const int materialItemOffset = 0xAB50;
-        private const int wardrobeItemOffset = 0xDA24;
-        private const int maxBagItem = 100;
-        private const int maxContainerItem = 999;
+        private const int MaxBagItem = 100;
+        private const int MaxContainerItem = 999;
+
+        private class ItemContainer
+        {
+            public int Offset { get; set; }
+            public int Count { get; set; }
+            public Item[] Items { get; set; }
+            public DataGridView ContainerDataGridView { get; set; }
+            public TabPage Tab { get; set; }
+        }
+        private ItemContainer[] containers;
+        private enum ContainerID { Bag, Toolbox, Fridge, Storage, Material, Wardrobe };
 
         public bool DataLoaded { get; private set; }
         public bool IsModified { get; private set; }
@@ -248,6 +245,17 @@ namespace SOSSE
             DataLoaded = false;
             IsModified = false;
             Util.LoadItemNameList();
+
+            // Initialize container object
+            containers = new ItemContainer[] {
+                new ItemContainer { Offset = 0x1A24, Count = MaxBagItem, Items = null, ContainerDataGridView = bagDataGridView, Tab = bagTab },
+                new ItemContainer { Offset = 0x1ED4, Count = MaxContainerItem, Items = null, ContainerDataGridView = toolboxDataGridView, Tab = toolboxTab },
+                new ItemContainer { Offset = 0x4DA8, Count = MaxContainerItem, Items = null, ContainerDataGridView = fridgeDataGridView, Tab = fridgeTab },
+                new ItemContainer { Offset = 0x7C7C, Count = MaxContainerItem, Items = null, ContainerDataGridView = storageDataGridView, Tab = storageTab },
+                new ItemContainer { Offset = 0xAB50, Count = MaxContainerItem, Items = null, ContainerDataGridView = materialDataGridView, Tab = materialTab },
+                new ItemContainer { Offset = 0xDA24, Count = MaxContainerItem, Items = null, ContainerDataGridView = wardrobeDataGridView, Tab = wardrobeTab }
+            };
+
             LoadItemData();
         }
 
@@ -290,35 +298,36 @@ namespace SOSSE
             materialStarColumn.Items.AddRange(StarQualityList);
             wardrobeStarColumn.Items.AddRange(StarQualityList);
 
-            bagItems = displayItem(bagDataGridView, bagItemOffset, maxBagItem);
-            toolboxItems = displayItem(toolboxDataGridView, toolboxItemOffset, maxContainerItem);
-            fridgeItems = displayItem(fridgeDataGridView, fridgeItemOffset, maxContainerItem);
-            storageItems = displayItem(storageDataGridView, storageItemOffset, maxContainerItem);
-            materialItems = displayItem(materialDataGridView, materialItemOffset, maxContainerItem);
-            wardrobeItems = displayItem(wardrobeDataGridView, wardrobeItemOffset, maxContainerItem);
+            loadItem(ContainerID.Bag);
+            loadItem(ContainerID.Toolbox);
+            loadItem(ContainerID.Fridge);
+            loadItem(ContainerID.Storage);
+            loadItem(ContainerID.Material);
+            loadItem(ContainerID.Wardrobe);
+
+            bagDataGridView.RowCount = MaxBagItem;
+            toolboxDataGridView.RowCount = MaxContainerItem;
+            fridgeDataGridView.RowCount = MaxContainerItem;
+            storageDataGridView.RowCount = MaxContainerItem;
+            materialDataGridView.RowCount = MaxContainerItem;
+            wardrobeDataGridView.RowCount = MaxContainerItem;
             
             DataLoaded = true;
         }
 
-        private Item[] displayItem(DataGridView dataGridView, int offset, int count)
+        // Load items from save data and sort them.
+        private void loadItem(ContainerID containerID)
         {
+            int count = containers[(int)containerID].Count;
             Item[] items = new Item[count];
-            int localOffset = offset;
+            int localOffset = containers[(int)containerID].Offset;
             for (int i = 0; i < count; i++)
             {
                 byte[] itemBytes = new byte[12];
                 Array.Copy(MainForm.SaveData, localOffset, itemBytes, 0, 12);
                 Item item = new Item(itemBytes);
                 items[i] = item;
-                localOffset += 12;
-            }
-            Array.Sort<Item>(items, (x, y) => x.CompareTo(y));
-            
-            dataGridView.Rows.Add(count);
-            for (int i = 0; i < count; i++)
-            {
-                dataGridView.Rows[i].Cells[0].Value = items[i].GetItemName();
-                if (items[i].Quality < -1)
+                if (item.Quality < -1)
                 {
                     // Fix quality error in older version
                     int tempQuality = items[i].Quality & 0xFFFF;
@@ -328,37 +337,206 @@ namespace SOSSE
                         items[i].Quality = Item.BaseQuality[items[i].Index];
                     IsModified = true;
                 }
-                if (items[i].Quality == -1)
-                    dataGridView.Rows[i].Cells[1].Value = StarQualityList[0];
-                if (items[i].Quality == 0)
-                    dataGridView.Rows[i].Cells[1].Value = StarQualityList[1];
-                if (items[i].Quality > 0 && items[i].Quality <= Item.MaxQuality)
-                    dataGridView.Rows[i].Cells[1].Value =
-                        StarQualityList[(items[i].Quality - 1) / 30 + 2];
-                if (items[i].Quality > Item.MaxQuality)
-                {
-                    dataGridView.Rows[i].Cells[1].Value = StarQualityList[12];
-                    dataGridView.Rows[i].Cells[1].ReadOnly = true;
-                    dataGridView.Rows[i].Cells[1].Style = MainForm.GrayCellStyle;
-                    dataGridView.Rows[i].Cells[2].ReadOnly = true;
-                    dataGridView.Rows[i].Cells[2].Style = MainForm.GrayCellStyle;
-                }
-                dataGridView.Rows[i].Cells[2].Value = items[i].Quality;
-                dataGridView.Rows[i].Cells[3].Value = items[i].Quantity;
-                if (items[i].Index == 0xFFFF || Item.BaseQuality[items[i].Index] == -1)
-                {
-                    dataGridView.Rows[i].Cells[1].ReadOnly = true;
-                    dataGridView.Rows[i].Cells[1].Style = MainForm.GrayCellStyle;
-                    dataGridView.Rows[i].Cells[2].ReadOnly = true;
-                    dataGridView.Rows[i].Cells[2].Style = MainForm.GrayCellStyle;
-                    dataGridView.Rows[i].Cells[3].ReadOnly = true;
-                    dataGridView.Rows[i].Cells[3].Style = MainForm.GrayCellStyle;
-                }
+                localOffset += 12;
             }
-            return items;
+            Array.Sort<Item>(items, (x, y) => x.CompareTo(y));
+            containers[(int)containerID].Items = items;
         }
 
+        #region CellValueNeeded
+        // Display item data when needed
+        private void dataGridView_CellValueNeeded(ContainerID containerID, DataGridViewCellValueEventArgs e)
+        {
+            Item[] items = containers[(int)containerID].Items;
+            int col = e.ColumnIndex;
+            int row = e.RowIndex;
+            switch (col)
+            {
+                case 0:
+                    e.Value = items[row].GetItemName();
+                    break;
+                case 1:
+                    e.Value = 5;
+                    if (items[row].Quality == -1)
+                        e.Value = StarQualityList[0];
+                    if (items[row].Quality == 0)
+                        e.Value = StarQualityList[1];
+                    if (items[row].Quality > 0 && items[row].Quality <= Item.MaxQuality)
+                        e.Value =
+                            StarQualityList[(items[row].Quality - 1) / 30 + 2];
+                    if (items[row].Quality > Item.MaxQuality)
+                    {
+                        e.Value = StarQualityList[12];
+                    }
+                    break;
+                case 2:
+                    e.Value = items[row].Quality;
+                    break;
+                case 3:
+                    e.Value = items[row].Quantity;
+                    break;
+            }
+        }
+
+        private void bagDataGridView_CellValueNeeded(object sender, DataGridViewCellValueEventArgs e)
+        {
+            dataGridView_CellValueNeeded(ContainerID.Bag, e);
+        }
+
+        private void toolboxDataGridView_CellValueNeeded(object sender, DataGridViewCellValueEventArgs e)
+        {
+            dataGridView_CellValueNeeded(ContainerID.Toolbox, e);
+        }
+
+        private void fridgeDataGridView_CellValueNeeded(object sender, DataGridViewCellValueEventArgs e)
+        {
+            dataGridView_CellValueNeeded(ContainerID.Fridge, e);
+        }
+
+        private void storageDataGridView_CellValueNeeded(object sender, DataGridViewCellValueEventArgs e)
+        {
+            dataGridView_CellValueNeeded(ContainerID.Storage, e);
+        }
+
+        private void materialDataGridView_CellValueNeeded(object sender, DataGridViewCellValueEventArgs e)
+        {
+            dataGridView_CellValueNeeded(ContainerID.Material, e);
+        }
+
+        private void wardrobeDataGridView_CellValueNeeded(object sender, DataGridViewCellValueEventArgs e)
+        {
+            dataGridView_CellValueNeeded(ContainerID.Wardrobe, e);
+        }
+        #endregion
+
+        #region CellValuePushed
+        // Push changes back to Item[] arrays
+        private void dataGridView_CellValuePushed(ContainerID containerID, DataGridViewCellValueEventArgs e)
+        {
+            Item[] items = containers[(int)containerID].Items;
+            DataGridView dataGridView = containers[(int)containerID].ContainerDataGridView;
+            switch (e.ColumnIndex)
+            {
+                case 0:
+                    int itemIndex = Array.IndexOf(Item.ItemNameList, e.Value);
+                    if (itemIndex == -1)
+                        items[e.RowIndex] = new Item();
+                    else
+                        items[e.RowIndex] = new Item((ushort)itemIndex);
+                    dataGridView.InvalidateRow(e.RowIndex); // Repaint
+                    break;
+                case 1:
+                    int starQualityIndex = Array.IndexOf(StarQualityList, e.Value.ToString());
+                    if (starQualityIndex == 0)
+                        items[e.RowIndex].Quality = -1;
+                    else if (starQualityIndex == 12)
+                        dataGridView.CancelEdit();
+                    else
+                        items[e.RowIndex].Quality = (starQualityIndex - 1) * 30;
+                    dataGridView.InvalidateRow(e.RowIndex);
+                    break;
+                // Quality (column 2) and Quantity (column 3) were handled in CellValidating event.
+            }
+        }
+
+        private void bagDataGridView_CellValuePushed(object sender, DataGridViewCellValueEventArgs e)
+        {
+            dataGridView_CellValuePushed(ContainerID.Bag, e);
+        }
+
+        private void toolboxDataGridView_CellValuePushed(object sender, DataGridViewCellValueEventArgs e)
+        {
+            dataGridView_CellValuePushed(ContainerID.Toolbox, e);
+        }
+
+        private void fridgeDataGridView_CellValuePushed(object sender, DataGridViewCellValueEventArgs e)
+        {
+            dataGridView_CellValuePushed(ContainerID.Fridge, e);
+        }
+
+        private void storageDataGridView_CellValuePushed(object sender, DataGridViewCellValueEventArgs e)
+        {
+            dataGridView_CellValuePushed(ContainerID.Storage, e);
+        }
+
+        private void materialDataGridView_CellValuePushed(object sender, DataGridViewCellValueEventArgs e)
+        {
+            dataGridView_CellValuePushed(ContainerID.Material, e);
+        }
+
+        private void wardrobeDataGridView_CellValuePushed(object sender, DataGridViewCellValueEventArgs e)
+        {
+            dataGridView_CellValuePushed(ContainerID.Wardrobe, e);
+        }
+        #endregion
+
+        #region CellFormatting
+        // Grayed out some cells based on their value.
+        private void dataGridView_CellFormatting(ContainerID containerID, DataGridViewCellFormattingEventArgs e)
+        {
+            Item[] items = containers[(int)containerID].Items;
+            DataGridView dataGridView = containers[(int)containerID].ContainerDataGridView;
+            switch (e.ColumnIndex)
+            {
+                case 1:
+                case 2:
+                    Item item = items[e.RowIndex];
+                    if ((item.Index == 0xFFFF) ||
+                        (item.Quality > Item.MaxQuality) ||
+                        (Item.BaseQuality[item.Index] == -1))
+                    {
+                        e.CellStyle.BackColor = Color.LightGray;
+                        dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].ReadOnly = true;
+                    }
+                    else
+                    {
+                        e.CellStyle.BackColor = dataGridView.DefaultCellStyle.BackColor;
+                        dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].ReadOnly = false;
+                    }
+                    break;
+                case 3:
+                    if ((items[e.RowIndex].Index == 0xFFFF) ||
+                        (Item.BaseQuality[items[e.RowIndex].Index] == -1))
+                        e.CellStyle.BackColor = Color.LightGray;
+                    else
+                        e.CellStyle.BackColor = dataGridView.DefaultCellStyle.BackColor;
+                    break;
+            }
+        }
+
+        private void bagDataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            dataGridView_CellFormatting(ContainerID.Bag, e);
+        }
+
+        private void toolboxDataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            dataGridView_CellFormatting(ContainerID.Toolbox, e);
+        }
+
+        private void fridgeDataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            dataGridView_CellFormatting(ContainerID.Fridge, e);
+        }
+
+        private void storageDataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            dataGridView_CellFormatting(ContainerID.Storage, e);
+        }
+
+        private void materialDataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            dataGridView_CellFormatting(ContainerID.Material, e);
+        }
+
+        private void wardrobeDataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            dataGridView_CellFormatting(ContainerID.Wardrobe, e);
+        }
+        #endregion
+
         #region CellClick
+        // Show dropdown list right after clicking into ComboBox cells.
         private void dataGridView_CellClick(DataGridView dataGridView, DataGridViewCellEventArgs e)
         {
             if ((e.ColumnIndex != 0) && (e.ColumnIndex != 1)) return;
@@ -398,6 +576,7 @@ namespace SOSSE
         #endregion
 
         #region CurrentCellDirtyStateChanged
+        // Commit cell value change for all ComboBox columns (column 0 and column 1).
         private void bagDataGridView_CurrentCellDirtyStateChanged(object sender, EventArgs e)
         {
             if (bagDataGridView.IsCurrentCellDirty &&
@@ -453,246 +632,80 @@ namespace SOSSE
         }
         #endregion
 
-        #region CellValueChanged
-        private int dataGridView_CellValueChanged(DataGridView dataGridView, DataGridViewCellEventArgs e)
-        {
-            if (!IsModified) IsModified = true;
-            // Edit item
-            if (e.ColumnIndex == 0)
-            {
-                int itemIndex = Array.IndexOf(Item.ItemNameList,
-                    dataGridView.Rows[e.RowIndex].Cells[0].Value);
-                // Check if quality value of that item can be edited
-                // Check if number of that item can be 99
-                // Set default parameters
-                // Change ReadOnly property of related cells
-                if (itemIndex == -1 || Item.BaseQuality[itemIndex] == -1)
-                {
-                    dataGridView.Rows[e.RowIndex].Cells[1].Value =
-                        StarQualityList[0];
-                    dataGridView.Rows[e.RowIndex].Cells[1].ReadOnly = true;
-                    dataGridView.Rows[e.RowIndex].Cells[1].Style = MainForm.GrayCellStyle;
-                    dataGridView.Rows[e.RowIndex].Cells[2].Value = -1;
-                    dataGridView.Rows[e.RowIndex].Cells[2].ReadOnly = true;
-                    dataGridView.Rows[e.RowIndex].Cells[2].Style = MainForm.GrayCellStyle;
-                    if (itemIndex == -1)
-                        dataGridView.Rows[e.RowIndex].Cells[3].Value = 0;
-                    else
-                        dataGridView.Rows[e.RowIndex].Cells[3].Value = 1;
-                    dataGridView.Rows[e.RowIndex].Cells[3].ReadOnly = true;
-                    dataGridView.Rows[e.RowIndex].Cells[3].Style = MainForm.GrayCellStyle;
-                }
-                else
-                {
-                    dataGridView.Rows[e.RowIndex].Cells[1].Value =
-                        StarQualityList[(Item.BaseQuality[itemIndex] - 1) / 30 + 1];
-                    dataGridView.Rows[e.RowIndex].Cells[1].ReadOnly = false;
-                    dataGridView.Rows[e.RowIndex].Cells[1].Style =
-                        dataGridView.DefaultCellStyle;
-                    dataGridView.Rows[e.RowIndex].Cells[2].Value =
-                        Item.BaseQuality[itemIndex];
-                    dataGridView.Rows[e.RowIndex].Cells[2].ReadOnly = false;
-                    dataGridView.Rows[e.RowIndex].Cells[2].Style =
-                        dataGridView.DefaultCellStyle;
-                    dataGridView.Rows[e.RowIndex].Cells[3].Value = 1;
-                    dataGridView.Rows[e.RowIndex].Cells[3].ReadOnly = false;
-                    dataGridView.Rows[e.RowIndex].Cells[3].Style =
-                        dataGridView.DefaultCellStyle;
-                }
-                return itemIndex;
-            }
-            return -2;
-        }
-        
-        private void bagDataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-            if (!DataLoaded) return;
-            int itemIndex = dataGridView_CellValueChanged(bagDataGridView, e);
-            if (itemIndex == -1) bagItems[e.RowIndex] = new Item();
-            if (itemIndex > -1)
-                bagItems[e.RowIndex] = new Item((ushort)itemIndex);
-        }
-
-        private void toolboxDataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-            if (!DataLoaded) return;
-            int itemIndex = dataGridView_CellValueChanged(toolboxDataGridView, e);
-            if (itemIndex == -1) toolboxItems[e.RowIndex] = new Item();
-            if (itemIndex > -1)
-                toolboxItems[e.RowIndex] = new Item((ushort)itemIndex);
-        }
-
-        private void fridgeDataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-            if (!DataLoaded) return;
-            int itemIndex = dataGridView_CellValueChanged(fridgeDataGridView, e);
-            if (itemIndex == -1) fridgeItems[e.RowIndex] = new Item();
-            if (itemIndex > -1)
-                fridgeItems[e.RowIndex] = new Item((ushort)itemIndex);
-        }
-
-        private void storageDataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-            if (!DataLoaded) return;
-            int itemIndex = dataGridView_CellValueChanged(storageDataGridView, e);
-            if (itemIndex == -1) storageItems[e.RowIndex] = new Item();
-            if (itemIndex > -1)
-                storageItems[e.RowIndex] = new Item((ushort)itemIndex);
-        }
-
-        private void materialDataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-            if (!DataLoaded) return;
-            int itemIndex = dataGridView_CellValueChanged(materialDataGridView, e);
-            if (itemIndex == -1) materialItems[e.RowIndex] = new Item();
-            if (itemIndex > -1)
-                materialItems[e.RowIndex] = new Item((ushort)itemIndex);
-        }
-
-        private void wardrobeDataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-            if (!DataLoaded) return;
-            int itemIndex = dataGridView_CellValueChanged(wardrobeDataGridView, e);
-            if (itemIndex == -1) wardrobeItems[e.RowIndex] = new Item();
-            if (itemIndex > -1)
-                wardrobeItems[e.RowIndex] = new Item((ushort)itemIndex);
-        }
-        #endregion
-
         #region CellValidating
-        private void dataGridView_CellValidating(DataGridView dataGridView, DataGridViewCellValidatingEventArgs e)
+        // Validate and push new values into Item[] arrays.
+        private void dataGridView_CellValidating(ContainerID containerID, DataGridViewCellValidatingEventArgs e)
         {
-            if (dataGridView.Rows[e.RowIndex].IsNewRow) return;
+            DataGridView dataGridView = containers[(int)containerID].ContainerDataGridView;
             if (dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].ReadOnly)
                 return;
-            if (e.ColumnIndex == 1)
+            switch (e.ColumnIndex)
             {
-                if (e.FormattedValue.ToString() == StarQualityList[12])
-                    dataGridView.CancelEdit();
-            }
-            if (e.ColumnIndex == 2)
-            {
-                int quality;
-                bool isValidQuality = Int32.TryParse(e.FormattedValue.ToString(), out quality);
-                if (!isValidQuality || quality < -1 || quality > Item.MaxQuality)
-                {
-                    dataGridView.Rows[e.RowIndex].Cells[2].ErrorText =
-                        "Quality value must be a valid number between -1 and 300";
-                    dataGridView.CancelEdit();
-                }
-                else
-                    dataGridView.Rows[e.RowIndex].Cells[2].ErrorText = null;
-            }
-            if (e.ColumnIndex == 3)
-            {
-                int quantity;
-                bool isValidQuantity = Int32.TryParse(e.FormattedValue.ToString(), out quantity);
-                if (!isValidQuantity || quantity < 1 || quantity > 99)
-                {
-                    dataGridView.Rows[e.RowIndex].Cells[3].ErrorText =
-                        "Amount must be a valid number between 1 and 99";
-                    dataGridView.CancelEdit();
-                }
-                else
-                    dataGridView.Rows[e.RowIndex].Cells[3].ErrorText = null;
+                case 2:
+                    int quality;
+                    bool isValidQuality = Int32.TryParse(e.FormattedValue.ToString(), out quality);
+                    if (!isValidQuality || quality < -1 || quality > Item.MaxQuality)
+                    {
+                        dataGridView.Rows[e.RowIndex].Cells[2].ErrorText =
+                            "Quality value must be a valid number between -1 and 300";
+                        dataGridView.CancelEdit();
+                    }
+                    else
+                    {
+                        dataGridView.Rows[e.RowIndex].Cells[2].ErrorText = null;
+                        containers[(int)containerID].Items[e.RowIndex].Quality = quality;
+                    }
+                    break;
+                case 3:
+                    byte quantity;
+                    bool isValidQuantity = Byte.TryParse(e.FormattedValue.ToString(), out quantity);
+                    if (!isValidQuantity || quantity < 1 || quantity > 99)
+                    {
+                        dataGridView.Rows[e.RowIndex].Cells[3].ErrorText =
+                            "Must be a valid number between 1 and 99";
+                        dataGridView.CancelEdit();
+                    }
+                    else
+                    {
+                        dataGridView.Rows[e.RowIndex].Cells[3].ErrorText = null;
+                        containers[(int)containerID].Items[e.RowIndex].Quantity = quantity;
+                    }
+                    break;
             }
         }
 
         private void bagDataGridView_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
-            dataGridView_CellValidating(bagDataGridView, e);
+            dataGridView_CellValidating(ContainerID.Bag, e);
         }
 
         private void toolboxDataGridView_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
-            dataGridView_CellValidating(toolboxDataGridView, e);
+            dataGridView_CellValidating(ContainerID.Toolbox, e);
         }
 
         private void fridgeDataGridView_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
-            dataGridView_CellValidating(fridgeDataGridView, e);
+            dataGridView_CellValidating(ContainerID.Fridge, e);
         }
 
         private void storageDataGridView_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
-            dataGridView_CellValidating(storageDataGridView, e);
+            dataGridView_CellValidating(ContainerID.Storage, e);
         }
 
         private void materialDataGridView_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
-            dataGridView_CellValidating(materialDataGridView, e);
+            dataGridView_CellValidating(ContainerID.Material, e);
         }
 
         private void wardrobeDataGridView_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
-            dataGridView_CellValidating(wardrobeDataGridView, e);
+            dataGridView_CellValidating(ContainerID.Wardrobe, e);
         }
         #endregion
 
-        #region CellEndEdit
-        private void dataGridView_CellEndEdit(DataGridView dataGridView, DataGridViewCellEventArgs e)
-        {
-            // Edit star quality
-            if (e.ColumnIndex == 1)
-            {
-                string starQuality = dataGridView.Rows[e.RowIndex].Cells[1].Value.ToString();
-                int starQualityIndex = Array.IndexOf(StarQualityList, starQuality);
-                if (starQualityIndex == 0)
-                    dataGridView.Rows[e.RowIndex].Cells[2].Value = -1;
-                else
-                    dataGridView.Rows[e.RowIndex].Cells[2].Value =
-                        (starQualityIndex - 1) * 30;
-            }
-            // Edit true quality value
-            if (e.ColumnIndex == 2)
-            {
-                string qualityInput = dataGridView.Rows[e.RowIndex].Cells[2].Value.ToString();
-                int quality;
-                bool isValidQuality = Int32.TryParse(qualityInput, out quality);
-                if (isValidQuality)
-                {
-                    if (quality > 0)
-                        dataGridView.Rows[e.RowIndex].Cells[1].Value =
-                            StarQualityList[(quality - 1) / 30 + 2];
-                    if (quality == 0)
-                        dataGridView.Rows[e.RowIndex].Cells[1].Value = StarQualityList[1];
-                    if (quality < 0)
-                        dataGridView.Rows[e.RowIndex].Cells[1].Value = StarQualityList[0];
-                }
-            }
-        }
-
-        private void bagDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
-            dataGridView_CellEndEdit(bagDataGridView, e);
-        }
-
-        private void toolboxDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
-            dataGridView_CellEndEdit(toolboxDataGridView, e);
-        }
-
-        private void fridgeDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
-            dataGridView_CellEndEdit(fridgeDataGridView, e);
-        }
-
-        private void storageDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
-            dataGridView_CellEndEdit(storageDataGridView, e);
-        }
-
-        private void materialDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
-            dataGridView_CellEndEdit(materialDataGridView, e);
-        }
-
-        private void wardrobeDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
-            dataGridView_CellEndEdit(wardrobeDataGridView, e);
-        }
-        #endregion
-
+        // Toggle between quality value and star quality.
         private void qualityCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             if (qualityCheckBox.Checked)
@@ -727,18 +740,16 @@ namespace SOSSE
             }
         }
 
-        private void saveItems(DataGridView dataGridView, int offset, int count, Item[] items)
+        // Save item data for specified container
+        private void saveItems(ContainerID containerID)
         {
+            Item[] items = containers[(int)containerID].Items;
+            int count = containers[(int)containerID].Count;
+            int offset = containers[(int)containerID].Offset;
+            DataGridView dataGridView = containers[(int)containerID].ContainerDataGridView;
             byte[] itemBytes = new byte[12 * count];
             for (int i = 0; i < count; i++)
             {
-                //int itemIndex = Array.IndexOf(Item.ItemNameList, dataGridView.Rows[i].Cells[0].Value.ToString());
-                int itemQuality;
-                bool isValidQuality = Int32.TryParse(dataGridView.Rows[i].Cells[2].Value.ToString(), out itemQuality);
-                byte itemQuantity;
-                bool isValidQuantity = Byte.TryParse(dataGridView.Rows[i].Cells[3].Value.ToString(), out itemQuantity);
-                items[i].Quality = itemQuality;
-                items[i].Quantity = itemQuantity;
                 Array.Copy(items[i].ToArray(), 0, itemBytes, 12 * i, 12);
             }
             Array.Copy(itemBytes, 0, MainForm.SaveData, offset, 12 * count);
@@ -746,122 +757,54 @@ namespace SOSSE
 
         private void saveAllItems()
         {
-            if (IsModified)
-            {
-                saveItems(bagDataGridView, bagItemOffset, maxBagItem, bagItems);
-                saveItems(toolboxDataGridView, toolboxItemOffset, maxContainerItem, toolboxItems);
-                saveItems(fridgeDataGridView, fridgeItemOffset, maxContainerItem, fridgeItems);
-                saveItems(storageDataGridView, storageItemOffset, maxContainerItem, storageItems);
-                saveItems(materialDataGridView, materialItemOffset, maxContainerItem, materialItems);
-                saveItems(wardrobeDataGridView, wardrobeItemOffset, maxContainerItem, wardrobeItems);
-            }
+            saveItems(ContainerID.Bag);
+            saveItems(ContainerID.Toolbox);
+            saveItems(ContainerID.Fridge);
+            saveItems(ContainerID.Storage);
+            saveItems(ContainerID.Material);
+            saveItems(ContainerID.Wardrobe);
         }
 
+        // Increase quantity of all items to 99.
         private void itemx99Button_Click(object sender, EventArgs e)
         {
-            DataGridView dataGridView = null;
-            Item[] items = null;
-            int count = 0;
-            if (itemTabControl.SelectedTab == bagTab)
-            {
-                dataGridView = bagDataGridView;
-                items = bagItems;
-                count = maxBagItem;
-            }
-            else
-                count = maxContainerItem;
-            if (itemTabControl.SelectedTab == toolboxTab)
-            {
-                dataGridView = toolboxDataGridView;
-                items = toolboxItems;
-            }
-            if (itemTabControl.SelectedTab == fridgeTab)
-            {
-                dataGridView = fridgeDataGridView;
-                items = fridgeItems;
-            }
-            if (itemTabControl.SelectedTab == storageTab)
-            {
-                dataGridView = storageDataGridView;
-                items = storageItems;
-            }
-            if (itemTabControl.SelectedTab == materialTab)
-            {
-                dataGridView = materialDataGridView;
-                items = materialItems;
-            }
-            if (itemTabControl.SelectedTab == wardrobeTab)
-            {
-                dataGridView = wardrobeDataGridView;
-                items = wardrobeItems;
-            }
+            int containerID = itemTabControl.SelectedIndex;
+            DataGridView dataGridView = containers[containerID].ContainerDataGridView;
+            Item[] items = containers[containerID].Items;
+            int count = containers[containerID].Count;
+
             if (dataGridView != null && items != null)
                 for (int i = 0; i < count; i++)
                 {
-                    //int itemIndex = Array.IndexOf(Item.ItemNameList, dataGridView.Rows[i].Cells[0].Value);
                     int itemIndex = items[i].Index;
-                    if (itemIndex == 0xFFFF) continue;
-                    if (Item.BaseQuality[itemIndex] != -1)
-                        dataGridView.Rows[i].Cells[3].Value = 99;
+                    if ((itemIndex == 0xFFFF) || (Item.BaseQuality[itemIndex] == -1)) continue;
+                    items[i].Quantity = 99;
+                    dataGridView.InvalidateRow(i);
                 }
         }
 
+        // Change quality of all items to maximum value if possible
         private void maxQualityButton_Click(object sender, EventArgs e)
         {
-            DataGridView dataGridView = null;
-            Item[] items = null;
-            int count = 0;
-            if (itemTabControl.SelectedTab == bagTab)
-            {
-                dataGridView = bagDataGridView;
-                items = bagItems;
-                count = maxBagItem;
-            }
-            else
-                count = maxContainerItem;
-            if (itemTabControl.SelectedTab == toolboxTab)
-            {
-                dataGridView = toolboxDataGridView;
-                items = toolboxItems;
-            }
-            if (itemTabControl.SelectedTab == fridgeTab)
-            {
-                dataGridView = fridgeDataGridView;
-                items = fridgeItems;
-            }
-            if (itemTabControl.SelectedTab == storageTab)
-            {
-                dataGridView = storageDataGridView;
-                items = storageItems;
-            }
-            if (itemTabControl.SelectedTab == materialTab)
-            {
-                dataGridView = materialDataGridView;
-                items = materialItems;
-            }
-            if (itemTabControl.SelectedTab == wardrobeTab)
-            {
-                dataGridView = wardrobeDataGridView;
-                items = wardrobeItems;
-            }
+            int containerID = itemTabControl.SelectedIndex;
+            DataGridView dataGridView = containers[containerID].ContainerDataGridView;
+            Item[] items = containers[containerID].Items;
+            int count = containers[containerID].Count;
+
             if (dataGridView != null && items != null)
                 for (int i = 0; i < count; i++)
                 {
                     //int itemIndex = Array.IndexOf(Item.ItemNameList, dataGridView.Rows[i].Cells[0].Value);
                     int itemIndex = items[i].Index;
-                    if (itemIndex == 0xFFFF) continue;
-                    if (Item.BaseQuality[itemIndex] != -1)
-                    {
-                        dataGridView.Rows[i].Cells[1].Value = StarQualityList[11];
-                        dataGridView.Rows[i].Cells[2].Value = Item.MaxQuality;
-                    }
+                    if ((itemIndex == 0xFFFF) || (Item.BaseQuality[itemIndex] == -1)) continue;
+                    items[i].Quality = Item.MaxQuality;
+                    dataGridView.InvalidateRow(i);
                 }
         }
 
         private void ItemEditingForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             saveAllItems();
-            e.Cancel = true;
         }
     }
 }

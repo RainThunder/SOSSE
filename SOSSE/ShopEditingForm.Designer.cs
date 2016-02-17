@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.shopLabel = new System.Windows.Forms.Label();
             this.shopComboBox = new System.Windows.Forms.ComboBox();
             this.shopTabControl = new System.Windows.Forms.TabControl();
@@ -125,13 +125,13 @@
             this.itemAvailable,
             this.itemStock});
             this.itemDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
-            this.itemDataGridView.Location = new System.Drawing.Point(8, 7);
+            this.itemDataGridView.Location = new System.Drawing.Point(6, 6);
             this.itemDataGridView.MultiSelect = false;
             this.itemDataGridView.Name = "itemDataGridView";
             this.itemDataGridView.RowHeadersVisible = false;
             this.itemDataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.itemDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.itemDataGridView.Size = new System.Drawing.Size(340, 172);
+            this.itemDataGridView.Size = new System.Drawing.Size(341, 173);
             this.itemDataGridView.TabIndex = 0;
             this.itemDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.itemDataGridView_CellClick);
             this.itemDataGridView.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.itemDataGridView_CellValidating);
@@ -155,8 +155,8 @@
             // 
             // itemStock
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.itemStock.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.itemStock.DefaultCellStyle = dataGridViewCellStyle3;
             this.itemStock.HeaderText = "Stock";
             this.itemStock.Name = "itemStock";
             this.itemStock.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -186,13 +186,13 @@
             this.blueprintUnlocked,
             this.blueprintBought});
             this.blueprintDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
-            this.blueprintDataGridView.Location = new System.Drawing.Point(7, 7);
+            this.blueprintDataGridView.Location = new System.Drawing.Point(6, 6);
             this.blueprintDataGridView.MultiSelect = false;
             this.blueprintDataGridView.Name = "blueprintDataGridView";
             this.blueprintDataGridView.RowHeadersVisible = false;
             this.blueprintDataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.blueprintDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.blueprintDataGridView.Size = new System.Drawing.Size(340, 172);
+            this.blueprintDataGridView.Size = new System.Drawing.Size(341, 173);
             this.blueprintDataGridView.TabIndex = 0;
             // 
             // blueprintName
@@ -239,13 +239,13 @@
             this.recipeUnlocked,
             this.recipeBought});
             this.recipeDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
-            this.recipeDataGridView.Location = new System.Drawing.Point(7, 7);
+            this.recipeDataGridView.Location = new System.Drawing.Point(6, 6);
             this.recipeDataGridView.MultiSelect = false;
             this.recipeDataGridView.Name = "recipeDataGridView";
             this.recipeDataGridView.RowHeadersVisible = false;
             this.recipeDataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.recipeDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.recipeDataGridView.Size = new System.Drawing.Size(340, 172);
+            this.recipeDataGridView.Size = new System.Drawing.Size(341, 173);
             this.recipeDataGridView.TabIndex = 0;
             // 
             // recipeSetName
@@ -292,13 +292,13 @@
             this.patternUnlocked,
             this.patternBought});
             this.patternDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
-            this.patternDataGridView.Location = new System.Drawing.Point(7, 7);
+            this.patternDataGridView.Location = new System.Drawing.Point(6, 6);
             this.patternDataGridView.MultiSelect = false;
             this.patternDataGridView.Name = "patternDataGridView";
             this.patternDataGridView.RowHeadersVisible = false;
             this.patternDataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.patternDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.patternDataGridView.Size = new System.Drawing.Size(340, 172);
+            this.patternDataGridView.Size = new System.Drawing.Size(341, 173);
             this.patternDataGridView.TabIndex = 0;
             // 
             // patternName
@@ -344,13 +344,13 @@
             this.animalName,
             this.animalUnlocked});
             this.animalDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
-            this.animalDataGridView.Location = new System.Drawing.Point(7, 7);
+            this.animalDataGridView.Location = new System.Drawing.Point(6, 6);
             this.animalDataGridView.MultiSelect = false;
             this.animalDataGridView.Name = "animalDataGridView";
             this.animalDataGridView.RowHeadersVisible = false;
             this.animalDataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.animalDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.animalDataGridView.Size = new System.Drawing.Size(340, 172);
+            this.animalDataGridView.Size = new System.Drawing.Size(341, 173);
             this.animalDataGridView.TabIndex = 1;
             // 
             // animalName

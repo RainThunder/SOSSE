@@ -11,8 +11,8 @@ namespace SOSSE
         {
             if (Item.ItemNameList == null)
             {
-                var txt = (string)Properties.Resources.ResourceManager.GetObject("ItemName");
-                Item.ItemNameList = ((string)txt).Replace("\r", "").Split(new[] { '\n' });
+                string txt = Properties.Resources.ResourceManager.GetString("ItemName");
+                Item.ItemNameList = txt.Replace("\r", "").Split(new[] { '\n' });
             }
         }
 
@@ -20,8 +20,8 @@ namespace SOSSE
         {
             if (BlueprintEditingForm.BlueprintNameList == null)
             {
-                Object txt = (string)Properties.Resources.ResourceManager.GetObject("BlueprintName");
-                BlueprintEditingForm.BlueprintNameList = ((string)txt).Replace("\r", "").Split(new[] { '\n' });
+                string txt = Properties.Resources.ResourceManager.GetString("BlueprintName");
+                BlueprintEditingForm.BlueprintNameList = txt.Replace("\r", "").Split(new[] { '\n' });
             }
         }
 
@@ -29,8 +29,8 @@ namespace SOSSE
         {
             if (BlueprintEditingForm.BlueprintSetNameList == null)
             {
-                Object txt = (string)Properties.Resources.ResourceManager.GetObject("BlueprintSetName");
-                BlueprintEditingForm.BlueprintSetNameList = ((string)txt).Replace("\r", "").Split(new[] { '\n' });
+                string txt = Properties.Resources.ResourceManager.GetString("BlueprintSetName");
+                BlueprintEditingForm.BlueprintSetNameList = txt.Replace("\r", "").Split(new[] { '\n' });
             }
         }
 
@@ -38,8 +38,8 @@ namespace SOSSE
         {
             if (PatternEditingForm.PatternNameList == null)
             {
-                Object txt = (string)Properties.Resources.ResourceManager.GetObject("PatternName");
-                PatternEditingForm.PatternNameList = ((string)txt).Replace("\r", "").Split(new[] { '\n' });
+                string txt = Properties.Resources.ResourceManager.GetString("PatternName");
+                PatternEditingForm.PatternNameList = txt.Replace("\r", "").Split(new[] { '\n' });
             }
         }
 
@@ -47,8 +47,8 @@ namespace SOSSE
         {
             if (PatternEditingForm.PatternSetNameList == null)
             {
-                Object txt = (string)Properties.Resources.ResourceManager.GetObject("PatternSetName");
-                PatternEditingForm.PatternSetNameList = ((string)txt).Replace("\r", "").Split(new[] { '\n' });
+                string txt = Properties.Resources.ResourceManager.GetString("PatternSetName");
+                PatternEditingForm.PatternSetNameList = txt.Replace("\r", "").Split(new[] { '\n' });
             }
         }
 
@@ -56,8 +56,8 @@ namespace SOSSE
         {
             if (RecipeEditingForm.RecipeSetNameList == null)
             {
-                Object txt = (string)Properties.Resources.ResourceManager.GetObject("RecipeSetName");
-                RecipeEditingForm.RecipeSetNameList = ((string)txt).Replace("\r", "").Split(new[] { '\n' });
+                string txt = Properties.Resources.ResourceManager.GetString("RecipeSetName");
+                RecipeEditingForm.RecipeSetNameList = txt.Replace("\r", "").Split(new[] { '\n' });
             }
         }
 
@@ -65,8 +65,8 @@ namespace SOSSE
         {
             if (AnimalEditingForm.AnimalTypeList == null)
             {
-                Object txt = (string)Properties.Resources.ResourceManager.GetObject("AnimalType");
-                AnimalEditingForm.AnimalTypeList = ((string)txt).Replace("\r", "").Split(new[] { '\n' });
+                string txt = Properties.Resources.ResourceManager.GetString("AnimalType");
+                AnimalEditingForm.AnimalTypeList = txt.Replace("\r", "").Split(new[] { '\n' });
             }
         }
 
@@ -74,8 +74,8 @@ namespace SOSSE
         {
             if (AnimalEditingForm.AnimalPersonalityList == null)
             {
-                Object txt = (string)Properties.Resources.ResourceManager.GetObject("AnimalPersonality");
-                AnimalEditingForm.AnimalPersonalityList = ((string)txt).Replace("\r", "").Split(new[] { '\n' });
+                string txt = Properties.Resources.ResourceManager.GetString("AnimalPersonality");
+                AnimalEditingForm.AnimalPersonalityList = txt.Replace("\r", "").Split(new[] { '\n' });
             }
         }
 
@@ -83,8 +83,8 @@ namespace SOSSE
         {
             if (ShopEditingForm.ShopNameList == null)
             {
-                Object txt = (string)Properties.Resources.ResourceManager.GetObject("ShopName");
-                ShopEditingForm.ShopNameList = ((string)txt).Replace("\r", "").Split(new[] { '\n' });
+                string txt = Properties.Resources.ResourceManager.GetString("ShopName");
+                ShopEditingForm.ShopNameList = txt.Replace("\r", "").Split(new[] { '\n' });
             }
         }
 
@@ -92,8 +92,8 @@ namespace SOSSE
         {
             if (ConquestEditingForm.TradingCategory == null)
             {
-                Object txt = (string)Properties.Resources.ResourceManager.GetObject("TradingCategory");
-                ConquestEditingForm.TradingCategory = ((string)txt).Replace("\r", "").Split(new[] { '\n' });
+                string txt = Properties.Resources.ResourceManager.GetString("TradingCategory");
+                ConquestEditingForm.TradingCategory = txt.Replace("\r", "").Split(new[] { '\n' });
             }
         }
 
@@ -101,8 +101,8 @@ namespace SOSSE
         {
             if (ObjectEditingForm.ObjectNameList == null)
             {
-                var txt = (string)Properties.Resources.ResourceManager.GetObject("ObjectName");
-                ObjectEditingForm.ObjectNameList = ((string)txt).Replace("\r", "").Split(new[] { '\n' });
+                string txt = Properties.Resources.ResourceManager.GetString("ObjectName");
+                ObjectEditingForm.ObjectNameList = txt.Replace("\r", "").Split(new[] { '\n' });
             }
         }
 
@@ -110,8 +110,8 @@ namespace SOSSE
         {
             if (ShipLogEditingForm.ItemObjectCategory == null)
             {
-                var txt = (string)Properties.Resources.ResourceManager.GetObject("ItemObjectCategory");
-                ShipLogEditingForm.ItemObjectCategory = ((string)txt).Replace("\r", "").Split(new[] { '\n' });
+                string txt = Properties.Resources.ResourceManager.GetString("ItemObjectCategory");
+                ShipLogEditingForm.ItemObjectCategory = txt.Replace("\r", "").Split(new[] { '\n' });
             }
         }
 
@@ -119,8 +119,8 @@ namespace SOSSE
         {
             if (GeneralEditingForm.Month == null)
             {
-                var txt = (string)Properties.Resources.ResourceManager.GetObject("Month");
-                GeneralEditingForm.Month = ((string)txt).Replace("\r", "").Split(new[] { '\n' });
+                string txt = Properties.Resources.ResourceManager.GetString("Month");
+                GeneralEditingForm.Month = txt.Replace("\r", "").Split(new[] { '\n' });
             }
         }
 
@@ -128,8 +128,8 @@ namespace SOSSE
         {
             if (NPCEditingForm.NPCNameList == null)
             {
-                var txt = (string)Properties.Resources.ResourceManager.GetObject("NPCName");
-                NPCEditingForm.NPCNameList = ((string)txt).Replace("\r", "").Split(new[] { '\n' });
+                string txt = Properties.Resources.ResourceManager.GetString("NPCName");
+                NPCEditingForm.NPCNameList = txt.Replace("\r", "").Split(new[] { '\n' });
             }
         }
 
@@ -137,8 +137,8 @@ namespace SOSSE
         {
             if (EventEditingForm.EventFlagList == null)
             {
-                var txt = (string)Properties.Resources.ResourceManager.GetObject("EventFlag");
-                EventEditingForm.EventFlagList = ((string)txt).Replace("\r", "").Split(new[] { '\n' });
+                string txt = Properties.Resources.ResourceManager.GetString("EventFlag");
+                EventEditingForm.EventFlagList = txt.Replace("\r", "").Split(new[] { '\n' });
             }
         }
     }

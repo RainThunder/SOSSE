@@ -28,51 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle195 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle196 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle197 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle198 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle199 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle200 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle201 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle202 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle193 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle194 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle203 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle204 = new System.Windows.Forms.DataGridViewCellStyle();
             this.itemTabControl = new System.Windows.Forms.TabControl();
             this.bagTab = new System.Windows.Forms.TabPage();
             this.bagDataGridView = new System.Windows.Forms.DataGridView();
             this.toolboxTab = new System.Windows.Forms.TabPage();
             this.toolboxDataGridView = new System.Windows.Forms.DataGridView();
-            this.toolboxItemColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.toolboxStarColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.toolboxQualityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.toolboxQuantityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fridgeTab = new System.Windows.Forms.TabPage();
             this.fridgeDataGridView = new System.Windows.Forms.DataGridView();
-            this.fridgeItemColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.fridgeStarColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.fridgeQualityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fridgeQuantityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.storageTab = new System.Windows.Forms.TabPage();
             this.storageDataGridView = new System.Windows.Forms.DataGridView();
-            this.storageItemColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.storageStarColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.storageQualityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.storageQuantityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.materialTab = new System.Windows.Forms.TabPage();
             this.materialDataGridView = new System.Windows.Forms.DataGridView();
-            this.materialItemColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.materialStarColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.materialQualityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.materialQuantityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.wardrobeTab = new System.Windows.Forms.TabPage();
             this.wardrobeDataGridView = new System.Windows.Forms.DataGridView();
-            this.wardrobeItemColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.wardrobeStarColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.wardrobeQualityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.wardrobeQuantityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.maxQualityButton = new System.Windows.Forms.Button();
             this.itemx99Button = new System.Windows.Forms.Button();
             this.qualityCheckBox = new System.Windows.Forms.CheckBox();
@@ -80,6 +60,26 @@
             this.bagStarColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.bagQualityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bagQuantityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.toolboxItemColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.toolboxStarColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.toolboxQualityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.toolboxQuantityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fridgeItemColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.fridgeStarColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.fridgeQualityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fridgeQuantityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.storageItemColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.storageStarColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.storageQualityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.storageQuantityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.wardrobeItemColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.wardrobeStarColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.wardrobeQualityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.wardrobeQuantityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.materialItemColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.materialStarColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.materialQualityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.materialQuantityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.itemTabControl.SuspendLayout();
             this.bagTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bagDataGridView)).BeginInit();
@@ -127,7 +127,7 @@
             this.bagDataGridView.AllowUserToResizeColumns = false;
             this.bagDataGridView.AllowUserToResizeRows = false;
             this.bagDataGridView.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
-            this.bagDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.bagDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.bagDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.bagItemColumn,
             this.bagStarColumn,
@@ -142,10 +142,12 @@
             this.bagDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.bagDataGridView.Size = new System.Drawing.Size(341, 215);
             this.bagDataGridView.TabIndex = 0;
+            this.bagDataGridView.VirtualMode = true;
             this.bagDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.bagDataGridView_CellClick);
-            this.bagDataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.bagDataGridView_CellEndEdit);
+            this.bagDataGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.bagDataGridView_CellFormatting);
             this.bagDataGridView.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.bagDataGridView_CellValidating);
-            this.bagDataGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.bagDataGridView_CellValueChanged);
+            this.bagDataGridView.CellValueNeeded += new System.Windows.Forms.DataGridViewCellValueEventHandler(this.bagDataGridView_CellValueNeeded);
+            this.bagDataGridView.CellValuePushed += new System.Windows.Forms.DataGridViewCellValueEventHandler(this.bagDataGridView_CellValuePushed);
             this.bagDataGridView.CurrentCellDirtyStateChanged += new System.EventHandler(this.bagDataGridView_CurrentCellDirtyStateChanged);
             // 
             // toolboxTab
@@ -166,58 +168,27 @@
             this.toolboxDataGridView.AllowUserToResizeColumns = false;
             this.toolboxDataGridView.AllowUserToResizeRows = false;
             this.toolboxDataGridView.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
-            this.toolboxDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.toolboxDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.toolboxDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.toolboxItemColumn,
             this.toolboxStarColumn,
             this.toolboxQualityColumn,
             this.toolboxQuantityColumn});
+            this.toolboxDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.toolboxDataGridView.Location = new System.Drawing.Point(6, 7);
             this.toolboxDataGridView.Name = "toolboxDataGridView";
             this.toolboxDataGridView.RowHeadersVisible = false;
+            this.toolboxDataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.toolboxDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.toolboxDataGridView.Size = new System.Drawing.Size(341, 215);
             this.toolboxDataGridView.TabIndex = 1;
+            this.toolboxDataGridView.VirtualMode = true;
             this.toolboxDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.toolboxDataGridView_CellClick);
-            this.toolboxDataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.toolboxDataGridView_CellEndEdit);
+            this.toolboxDataGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.toolboxDataGridView_CellFormatting);
             this.toolboxDataGridView.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.toolboxDataGridView_CellValidating);
-            this.toolboxDataGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.toolboxDataGridView_CellValueChanged);
+            this.toolboxDataGridView.CellValueNeeded += new System.Windows.Forms.DataGridViewCellValueEventHandler(this.toolboxDataGridView_CellValueNeeded);
+            this.toolboxDataGridView.CellValuePushed += new System.Windows.Forms.DataGridViewCellValueEventHandler(this.toolboxDataGridView_CellValuePushed);
             this.toolboxDataGridView.CurrentCellDirtyStateChanged += new System.EventHandler(this.toolboxDataGridView_CurrentCellDirtyStateChanged);
-            // 
-            // toolboxItemColumn
-            // 
-            this.toolboxItemColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            this.toolboxItemColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.toolboxItemColumn.HeaderText = "Item";
-            this.toolboxItemColumn.Name = "toolboxItemColumn";
-            this.toolboxItemColumn.Width = 192;
-            // 
-            // toolboxStarColumn
-            // 
-            this.toolboxStarColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            this.toolboxStarColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.toolboxStarColumn.HeaderText = "Star";
-            this.toolboxStarColumn.Name = "toolboxStarColumn";
-            this.toolboxStarColumn.Width = 64;
-            // 
-            // toolboxQualityColumn
-            // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.toolboxQualityColumn.DefaultCellStyle = dataGridViewCellStyle3;
-            this.toolboxQualityColumn.HeaderText = "Quality";
-            this.toolboxQualityColumn.Name = "toolboxQualityColumn";
-            this.toolboxQualityColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.toolboxQualityColumn.Visible = false;
-            this.toolboxQualityColumn.Width = 64;
-            // 
-            // toolboxQuantityColumn
-            // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.toolboxQuantityColumn.DefaultCellStyle = dataGridViewCellStyle4;
-            this.toolboxQuantityColumn.HeaderText = "Quantity";
-            this.toolboxQuantityColumn.MaxInputLength = 2;
-            this.toolboxQuantityColumn.Name = "toolboxQuantityColumn";
-            this.toolboxQuantityColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.toolboxQuantityColumn.Width = 64;
             // 
             // fridgeTab
             // 
@@ -237,58 +208,27 @@
             this.fridgeDataGridView.AllowUserToResizeColumns = false;
             this.fridgeDataGridView.AllowUserToResizeRows = false;
             this.fridgeDataGridView.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
-            this.fridgeDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.fridgeDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.fridgeDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.fridgeItemColumn,
             this.fridgeStarColumn,
             this.fridgeQualityColumn,
             this.fridgeQuantityColumn});
+            this.fridgeDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.fridgeDataGridView.Location = new System.Drawing.Point(6, 7);
             this.fridgeDataGridView.Name = "fridgeDataGridView";
             this.fridgeDataGridView.RowHeadersVisible = false;
+            this.fridgeDataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.fridgeDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.fridgeDataGridView.Size = new System.Drawing.Size(341, 215);
             this.fridgeDataGridView.TabIndex = 1;
+            this.fridgeDataGridView.VirtualMode = true;
             this.fridgeDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.fridgeDataGridView_CellClick);
-            this.fridgeDataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.fridgeDataGridView_CellEndEdit);
+            this.fridgeDataGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.fridgeDataGridView_CellFormatting);
             this.fridgeDataGridView.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.fridgeDataGridView_CellValidating);
-            this.fridgeDataGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.fridgeDataGridView_CellClick);
+            this.fridgeDataGridView.CellValueNeeded += new System.Windows.Forms.DataGridViewCellValueEventHandler(this.fridgeDataGridView_CellValueNeeded);
+            this.fridgeDataGridView.CellValuePushed += new System.Windows.Forms.DataGridViewCellValueEventHandler(this.fridgeDataGridView_CellValuePushed);
             this.fridgeDataGridView.CurrentCellDirtyStateChanged += new System.EventHandler(this.fridgeDataGridView_CurrentCellDirtyStateChanged);
-            // 
-            // fridgeItemColumn
-            // 
-            this.fridgeItemColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            this.fridgeItemColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.fridgeItemColumn.HeaderText = "Item";
-            this.fridgeItemColumn.Name = "fridgeItemColumn";
-            this.fridgeItemColumn.Width = 192;
-            // 
-            // fridgeStarColumn
-            // 
-            this.fridgeStarColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            this.fridgeStarColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.fridgeStarColumn.HeaderText = "Star";
-            this.fridgeStarColumn.Name = "fridgeStarColumn";
-            this.fridgeStarColumn.Width = 64;
-            // 
-            // fridgeQualityColumn
-            // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.fridgeQualityColumn.DefaultCellStyle = dataGridViewCellStyle5;
-            this.fridgeQualityColumn.HeaderText = "Quality";
-            this.fridgeQualityColumn.Name = "fridgeQualityColumn";
-            this.fridgeQualityColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.fridgeQualityColumn.Visible = false;
-            this.fridgeQualityColumn.Width = 64;
-            // 
-            // fridgeQuantityColumn
-            // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.fridgeQuantityColumn.DefaultCellStyle = dataGridViewCellStyle6;
-            this.fridgeQuantityColumn.HeaderText = "Quantity";
-            this.fridgeQuantityColumn.MaxInputLength = 2;
-            this.fridgeQuantityColumn.Name = "fridgeQuantityColumn";
-            this.fridgeQuantityColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.fridgeQuantityColumn.Width = 64;
             // 
             // storageTab
             // 
@@ -308,58 +248,27 @@
             this.storageDataGridView.AllowUserToResizeColumns = false;
             this.storageDataGridView.AllowUserToResizeRows = false;
             this.storageDataGridView.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
-            this.storageDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.storageDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.storageDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.storageItemColumn,
             this.storageStarColumn,
             this.storageQualityColumn,
             this.storageQuantityColumn});
+            this.storageDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.storageDataGridView.Location = new System.Drawing.Point(6, 7);
             this.storageDataGridView.Name = "storageDataGridView";
             this.storageDataGridView.RowHeadersVisible = false;
+            this.storageDataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.storageDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.storageDataGridView.Size = new System.Drawing.Size(341, 215);
             this.storageDataGridView.TabIndex = 2;
+            this.storageDataGridView.VirtualMode = true;
             this.storageDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.storageDataGridView_CellClick);
-            this.storageDataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.storageDataGridView_CellEndEdit);
+            this.storageDataGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.storageDataGridView_CellFormatting);
             this.storageDataGridView.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.storageDataGridView_CellValidating);
-            this.storageDataGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.storageDataGridView_CellValueChanged);
+            this.storageDataGridView.CellValueNeeded += new System.Windows.Forms.DataGridViewCellValueEventHandler(this.storageDataGridView_CellValueNeeded);
+            this.storageDataGridView.CellValuePushed += new System.Windows.Forms.DataGridViewCellValueEventHandler(this.storageDataGridView_CellValuePushed);
             this.storageDataGridView.CurrentCellDirtyStateChanged += new System.EventHandler(this.storageDataGridView_CurrentCellDirtyStateChanged);
-            // 
-            // storageItemColumn
-            // 
-            this.storageItemColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            this.storageItemColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.storageItemColumn.HeaderText = "Item";
-            this.storageItemColumn.Name = "storageItemColumn";
-            this.storageItemColumn.Width = 192;
-            // 
-            // storageStarColumn
-            // 
-            this.storageStarColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            this.storageStarColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.storageStarColumn.HeaderText = "Star";
-            this.storageStarColumn.Name = "storageStarColumn";
-            this.storageStarColumn.Width = 64;
-            // 
-            // storageQualityColumn
-            // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.storageQualityColumn.DefaultCellStyle = dataGridViewCellStyle7;
-            this.storageQualityColumn.HeaderText = "Quality";
-            this.storageQualityColumn.Name = "storageQualityColumn";
-            this.storageQualityColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.storageQualityColumn.Visible = false;
-            this.storageQualityColumn.Width = 64;
-            // 
-            // storageQuantityColumn
-            // 
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.storageQuantityColumn.DefaultCellStyle = dataGridViewCellStyle8;
-            this.storageQuantityColumn.HeaderText = "Quantity";
-            this.storageQuantityColumn.MaxInputLength = 2;
-            this.storageQuantityColumn.Name = "storageQuantityColumn";
-            this.storageQuantityColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.storageQuantityColumn.Width = 64;
             // 
             // materialTab
             // 
@@ -379,58 +288,27 @@
             this.materialDataGridView.AllowUserToResizeColumns = false;
             this.materialDataGridView.AllowUserToResizeRows = false;
             this.materialDataGridView.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
-            this.materialDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.materialDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.materialDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.materialItemColumn,
             this.materialStarColumn,
             this.materialQualityColumn,
             this.materialQuantityColumn});
+            this.materialDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.materialDataGridView.Location = new System.Drawing.Point(6, 7);
             this.materialDataGridView.Name = "materialDataGridView";
             this.materialDataGridView.RowHeadersVisible = false;
+            this.materialDataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.materialDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.materialDataGridView.Size = new System.Drawing.Size(341, 215);
             this.materialDataGridView.TabIndex = 2;
+            this.materialDataGridView.VirtualMode = true;
             this.materialDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.materialDataGridView_CellClick);
-            this.materialDataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.materialDataGridView_CellEndEdit);
+            this.materialDataGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.materialDataGridView_CellFormatting);
             this.materialDataGridView.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.materialDataGridView_CellValidating);
-            this.materialDataGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.materialDataGridView_CellValueChanged);
+            this.materialDataGridView.CellValueNeeded += new System.Windows.Forms.DataGridViewCellValueEventHandler(this.materialDataGridView_CellValueNeeded);
+            this.materialDataGridView.CellValuePushed += new System.Windows.Forms.DataGridViewCellValueEventHandler(this.materialDataGridView_CellValuePushed);
             this.materialDataGridView.CurrentCellDirtyStateChanged += new System.EventHandler(this.materialDataGridView_CurrentCellDirtyStateChanged);
-            // 
-            // materialItemColumn
-            // 
-            this.materialItemColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            this.materialItemColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.materialItemColumn.HeaderText = "Item";
-            this.materialItemColumn.Name = "materialItemColumn";
-            this.materialItemColumn.Width = 192;
-            // 
-            // materialStarColumn
-            // 
-            this.materialStarColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            this.materialStarColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.materialStarColumn.HeaderText = "Star";
-            this.materialStarColumn.Name = "materialStarColumn";
-            this.materialStarColumn.Width = 64;
-            // 
-            // materialQualityColumn
-            // 
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.materialQualityColumn.DefaultCellStyle = dataGridViewCellStyle9;
-            this.materialQualityColumn.HeaderText = "Quality";
-            this.materialQualityColumn.Name = "materialQualityColumn";
-            this.materialQualityColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.materialQualityColumn.Visible = false;
-            this.materialQualityColumn.Width = 64;
-            // 
-            // materialQuantityColumn
-            // 
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.materialQuantityColumn.DefaultCellStyle = dataGridViewCellStyle10;
-            this.materialQuantityColumn.HeaderText = "Quantity";
-            this.materialQuantityColumn.MaxInputLength = 2;
-            this.materialQuantityColumn.Name = "materialQuantityColumn";
-            this.materialQuantityColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.materialQuantityColumn.Width = 64;
             // 
             // wardrobeTab
             // 
@@ -450,58 +328,27 @@
             this.wardrobeDataGridView.AllowUserToResizeColumns = false;
             this.wardrobeDataGridView.AllowUserToResizeRows = false;
             this.wardrobeDataGridView.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
-            this.wardrobeDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.wardrobeDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.wardrobeDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.wardrobeItemColumn,
             this.wardrobeStarColumn,
             this.wardrobeQualityColumn,
             this.wardrobeQuantityColumn});
+            this.wardrobeDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.wardrobeDataGridView.Location = new System.Drawing.Point(6, 7);
             this.wardrobeDataGridView.Name = "wardrobeDataGridView";
             this.wardrobeDataGridView.RowHeadersVisible = false;
+            this.wardrobeDataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.wardrobeDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.wardrobeDataGridView.Size = new System.Drawing.Size(341, 215);
             this.wardrobeDataGridView.TabIndex = 2;
+            this.wardrobeDataGridView.VirtualMode = true;
             this.wardrobeDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.wardrobeDataGridView_CellClick);
-            this.wardrobeDataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.wardrobeDataGridView_CellEndEdit);
+            this.wardrobeDataGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.wardrobeDataGridView_CellFormatting);
             this.wardrobeDataGridView.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.wardrobeDataGridView_CellValidating);
-            this.wardrobeDataGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.wardrobeDataGridView_CellValueChanged);
+            this.wardrobeDataGridView.CellValueNeeded += new System.Windows.Forms.DataGridViewCellValueEventHandler(this.wardrobeDataGridView_CellValueNeeded);
+            this.wardrobeDataGridView.CellValuePushed += new System.Windows.Forms.DataGridViewCellValueEventHandler(this.wardrobeDataGridView_CellValuePushed);
             this.wardrobeDataGridView.CurrentCellDirtyStateChanged += new System.EventHandler(this.wardrobeDataGridView_CurrentCellDirtyStateChanged);
-            // 
-            // wardrobeItemColumn
-            // 
-            this.wardrobeItemColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            this.wardrobeItemColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.wardrobeItemColumn.HeaderText = "Item";
-            this.wardrobeItemColumn.Name = "wardrobeItemColumn";
-            this.wardrobeItemColumn.Width = 192;
-            // 
-            // wardrobeStarColumn
-            // 
-            this.wardrobeStarColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            this.wardrobeStarColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.wardrobeStarColumn.HeaderText = "Star";
-            this.wardrobeStarColumn.Name = "wardrobeStarColumn";
-            this.wardrobeStarColumn.Width = 64;
-            // 
-            // wardrobeQualityColumn
-            // 
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.wardrobeQualityColumn.DefaultCellStyle = dataGridViewCellStyle11;
-            this.wardrobeQualityColumn.HeaderText = "Quality";
-            this.wardrobeQualityColumn.Name = "wardrobeQualityColumn";
-            this.wardrobeQualityColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.wardrobeQualityColumn.Visible = false;
-            this.wardrobeQualityColumn.Width = 64;
-            // 
-            // wardrobeQuantityColumn
-            // 
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.wardrobeQuantityColumn.DefaultCellStyle = dataGridViewCellStyle12;
-            this.wardrobeQuantityColumn.HeaderText = "Quantity";
-            this.wardrobeQuantityColumn.MaxInputLength = 2;
-            this.wardrobeQuantityColumn.Name = "wardrobeQuantityColumn";
-            this.wardrobeQuantityColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.wardrobeQuantityColumn.Width = 64;
             // 
             // maxQualityButton
             // 
@@ -552,9 +399,10 @@
             // 
             // bagQualityColumn
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.bagQualityColumn.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle195.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.bagQualityColumn.DefaultCellStyle = dataGridViewCellStyle195;
             this.bagQualityColumn.HeaderText = "Quality";
+            this.bagQualityColumn.MaxInputLength = 3;
             this.bagQualityColumn.Name = "bagQualityColumn";
             this.bagQualityColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.bagQualityColumn.Visible = false;
@@ -562,13 +410,198 @@
             // 
             // bagQuantityColumn
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.bagQuantityColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle196.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.bagQuantityColumn.DefaultCellStyle = dataGridViewCellStyle196;
             this.bagQuantityColumn.HeaderText = "Quantity";
             this.bagQuantityColumn.MaxInputLength = 2;
             this.bagQuantityColumn.Name = "bagQuantityColumn";
             this.bagQuantityColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.bagQuantityColumn.Width = 64;
+            // 
+            // toolboxItemColumn
+            // 
+            this.toolboxItemColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.toolboxItemColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.toolboxItemColumn.HeaderText = "Item";
+            this.toolboxItemColumn.Name = "toolboxItemColumn";
+            this.toolboxItemColumn.Width = 192;
+            // 
+            // toolboxStarColumn
+            // 
+            this.toolboxStarColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.toolboxStarColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.toolboxStarColumn.HeaderText = "Star";
+            this.toolboxStarColumn.Name = "toolboxStarColumn";
+            this.toolboxStarColumn.Width = 64;
+            // 
+            // toolboxQualityColumn
+            // 
+            dataGridViewCellStyle197.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.toolboxQualityColumn.DefaultCellStyle = dataGridViewCellStyle197;
+            this.toolboxQualityColumn.HeaderText = "Quality";
+            this.toolboxQualityColumn.MaxInputLength = 3;
+            this.toolboxQualityColumn.Name = "toolboxQualityColumn";
+            this.toolboxQualityColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.toolboxQualityColumn.Visible = false;
+            this.toolboxQualityColumn.Width = 64;
+            // 
+            // toolboxQuantityColumn
+            // 
+            dataGridViewCellStyle198.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.toolboxQuantityColumn.DefaultCellStyle = dataGridViewCellStyle198;
+            this.toolboxQuantityColumn.HeaderText = "Quantity";
+            this.toolboxQuantityColumn.MaxInputLength = 2;
+            this.toolboxQuantityColumn.Name = "toolboxQuantityColumn";
+            this.toolboxQuantityColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.toolboxQuantityColumn.Width = 64;
+            // 
+            // fridgeItemColumn
+            // 
+            this.fridgeItemColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.fridgeItemColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.fridgeItemColumn.HeaderText = "Item";
+            this.fridgeItemColumn.Name = "fridgeItemColumn";
+            this.fridgeItemColumn.Width = 192;
+            // 
+            // fridgeStarColumn
+            // 
+            this.fridgeStarColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.fridgeStarColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.fridgeStarColumn.HeaderText = "Star";
+            this.fridgeStarColumn.Name = "fridgeStarColumn";
+            this.fridgeStarColumn.Width = 64;
+            // 
+            // fridgeQualityColumn
+            // 
+            dataGridViewCellStyle199.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.fridgeQualityColumn.DefaultCellStyle = dataGridViewCellStyle199;
+            this.fridgeQualityColumn.HeaderText = "Quality";
+            this.fridgeQualityColumn.MaxInputLength = 3;
+            this.fridgeQualityColumn.Name = "fridgeQualityColumn";
+            this.fridgeQualityColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.fridgeQualityColumn.Visible = false;
+            this.fridgeQualityColumn.Width = 64;
+            // 
+            // fridgeQuantityColumn
+            // 
+            dataGridViewCellStyle200.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.fridgeQuantityColumn.DefaultCellStyle = dataGridViewCellStyle200;
+            this.fridgeQuantityColumn.HeaderText = "Quantity";
+            this.fridgeQuantityColumn.MaxInputLength = 2;
+            this.fridgeQuantityColumn.Name = "fridgeQuantityColumn";
+            this.fridgeQuantityColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.fridgeQuantityColumn.Width = 64;
+            // 
+            // storageItemColumn
+            // 
+            this.storageItemColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.storageItemColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.storageItemColumn.HeaderText = "Item";
+            this.storageItemColumn.Name = "storageItemColumn";
+            this.storageItemColumn.Width = 192;
+            // 
+            // storageStarColumn
+            // 
+            this.storageStarColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.storageStarColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.storageStarColumn.HeaderText = "Star";
+            this.storageStarColumn.Name = "storageStarColumn";
+            this.storageStarColumn.Width = 64;
+            // 
+            // storageQualityColumn
+            // 
+            dataGridViewCellStyle201.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.storageQualityColumn.DefaultCellStyle = dataGridViewCellStyle201;
+            this.storageQualityColumn.HeaderText = "Quality";
+            this.storageQualityColumn.MaxInputLength = 3;
+            this.storageQualityColumn.Name = "storageQualityColumn";
+            this.storageQualityColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.storageQualityColumn.Visible = false;
+            this.storageQualityColumn.Width = 64;
+            // 
+            // storageQuantityColumn
+            // 
+            dataGridViewCellStyle202.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.storageQuantityColumn.DefaultCellStyle = dataGridViewCellStyle202;
+            this.storageQuantityColumn.HeaderText = "Quantity";
+            this.storageQuantityColumn.MaxInputLength = 2;
+            this.storageQuantityColumn.Name = "storageQuantityColumn";
+            this.storageQuantityColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.storageQuantityColumn.Width = 64;
+            // 
+            // wardrobeItemColumn
+            // 
+            this.wardrobeItemColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.wardrobeItemColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.wardrobeItemColumn.HeaderText = "Item";
+            this.wardrobeItemColumn.Name = "wardrobeItemColumn";
+            this.wardrobeItemColumn.Width = 192;
+            // 
+            // wardrobeStarColumn
+            // 
+            this.wardrobeStarColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.wardrobeStarColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.wardrobeStarColumn.HeaderText = "Star";
+            this.wardrobeStarColumn.Name = "wardrobeStarColumn";
+            this.wardrobeStarColumn.Width = 64;
+            // 
+            // wardrobeQualityColumn
+            // 
+            dataGridViewCellStyle193.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.wardrobeQualityColumn.DefaultCellStyle = dataGridViewCellStyle193;
+            this.wardrobeQualityColumn.HeaderText = "Quality";
+            this.wardrobeQualityColumn.MaxInputLength = 3;
+            this.wardrobeQualityColumn.Name = "wardrobeQualityColumn";
+            this.wardrobeQualityColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.wardrobeQualityColumn.Visible = false;
+            this.wardrobeQualityColumn.Width = 64;
+            // 
+            // wardrobeQuantityColumn
+            // 
+            dataGridViewCellStyle194.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.wardrobeQuantityColumn.DefaultCellStyle = dataGridViewCellStyle194;
+            this.wardrobeQuantityColumn.HeaderText = "Quantity";
+            this.wardrobeQuantityColumn.MaxInputLength = 2;
+            this.wardrobeQuantityColumn.Name = "wardrobeQuantityColumn";
+            this.wardrobeQuantityColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.wardrobeQuantityColumn.Width = 64;
+            // 
+            // materialItemColumn
+            // 
+            this.materialItemColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.materialItemColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.materialItemColumn.HeaderText = "Item";
+            this.materialItemColumn.Name = "materialItemColumn";
+            this.materialItemColumn.Width = 192;
+            // 
+            // materialStarColumn
+            // 
+            this.materialStarColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.materialStarColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.materialStarColumn.HeaderText = "Star";
+            this.materialStarColumn.Name = "materialStarColumn";
+            this.materialStarColumn.Width = 64;
+            // 
+            // materialQualityColumn
+            // 
+            dataGridViewCellStyle203.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.materialQualityColumn.DefaultCellStyle = dataGridViewCellStyle203;
+            this.materialQualityColumn.HeaderText = "Quality";
+            this.materialQualityColumn.MaxInputLength = 3;
+            this.materialQualityColumn.Name = "materialQualityColumn";
+            this.materialQualityColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.materialQualityColumn.Visible = false;
+            this.materialQualityColumn.Width = 64;
+            // 
+            // materialQuantityColumn
+            // 
+            dataGridViewCellStyle204.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.materialQuantityColumn.DefaultCellStyle = dataGridViewCellStyle204;
+            this.materialQuantityColumn.HeaderText = "Quantity";
+            this.materialQuantityColumn.MaxInputLength = 2;
+            this.materialQuantityColumn.Name = "materialQuantityColumn";
+            this.materialQuantityColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.materialQuantityColumn.Width = 64;
             // 
             // ItemEditingForm
             // 
@@ -619,6 +652,10 @@
         private System.Windows.Forms.DataGridView storageDataGridView;
         private System.Windows.Forms.DataGridView materialDataGridView;
         private System.Windows.Forms.DataGridView wardrobeDataGridView;
+        private System.Windows.Forms.DataGridViewComboBoxColumn bagItemColumn;
+        private System.Windows.Forms.DataGridViewComboBoxColumn bagStarColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn bagQualityColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn bagQuantityColumn;
         private System.Windows.Forms.DataGridViewComboBoxColumn toolboxItemColumn;
         private System.Windows.Forms.DataGridViewComboBoxColumn toolboxStarColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn toolboxQualityColumn;
@@ -639,9 +676,5 @@
         private System.Windows.Forms.DataGridViewComboBoxColumn wardrobeStarColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn wardrobeQualityColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn wardrobeQuantityColumn;
-        private System.Windows.Forms.DataGridViewComboBoxColumn bagItemColumn;
-        private System.Windows.Forms.DataGridViewComboBoxColumn bagStarColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn bagQualityColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn bagQuantityColumn;
     }
 }
