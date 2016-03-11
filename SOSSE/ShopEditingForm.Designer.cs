@@ -28,34 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.shopLabel = new System.Windows.Forms.Label();
             this.shopComboBox = new System.Windows.Forms.ComboBox();
             this.shopTabControl = new System.Windows.Forms.TabControl();
             this.itemTabPage = new System.Windows.Forms.TabPage();
             this.itemDataGridView = new System.Windows.Forms.DataGridView();
-            this.itemName = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.itemAvailable = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.itemStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.itemColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.itemAvailabilityColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.itemStockColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.blueprintTabPage = new System.Windows.Forms.TabPage();
             this.blueprintDataGridView = new System.Windows.Forms.DataGridView();
-            this.blueprintName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.blueprintUnlocked = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.blueprintBought = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.blueprintSetColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.blueprintUnlockedColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.blueprintBoughtColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.recipeTabPage = new System.Windows.Forms.TabPage();
             this.recipeDataGridView = new System.Windows.Forms.DataGridView();
-            this.recipeSetName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.recipeUnlocked = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.recipeBought = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.recipeSetColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.recipeUnlockedColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.recipeBoughtColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.patternTabPage = new System.Windows.Forms.TabPage();
             this.patternDataGridView = new System.Windows.Forms.DataGridView();
-            this.patternName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.patternUnlocked = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.patternBought = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.patternSetColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.patternUnlockedColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.patternBoughtColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.animalTabPage = new System.Windows.Forms.TabPage();
             this.animalDataGridView = new System.Windows.Forms.DataGridView();
-            this.animalName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.animalUnlocked = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.animalColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.animalUnlockedColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.shopTabControl.SuspendLayout();
             this.itemTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.itemDataGridView)).BeginInit();
@@ -100,6 +100,7 @@
             this.shopTabControl.SelectedIndex = 0;
             this.shopTabControl.Size = new System.Drawing.Size(361, 211);
             this.shopTabControl.TabIndex = 2;
+            this.shopTabControl.SelectedIndexChanged += new System.EventHandler(this.shopTabControl_SelectedIndexChanged);
             // 
             // itemTabPage
             // 
@@ -121,9 +122,9 @@
             this.itemDataGridView.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.itemDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.itemDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.itemName,
-            this.itemAvailable,
-            this.itemStock});
+            this.itemColumn,
+            this.itemAvailabilityColumn,
+            this.itemStockColumn});
             this.itemDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.itemDataGridView.Location = new System.Drawing.Point(6, 6);
             this.itemDataGridView.MultiSelect = false;
@@ -138,29 +139,30 @@
             this.itemDataGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.itemDataGridView_CellValueChanged);
             this.itemDataGridView.CurrentCellDirtyStateChanged += new System.EventHandler(this.itemDataGridView_CurrentCellDirtyStateChanged);
             // 
-            // itemName
+            // itemColumn
             // 
-            this.itemName.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            this.itemName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.itemName.HeaderText = "Item";
-            this.itemName.Name = "itemName";
-            this.itemName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.itemName.Width = 192;
+            this.itemColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.itemColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.itemColumn.HeaderText = "Item";
+            this.itemColumn.Name = "itemColumn";
+            this.itemColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.itemColumn.Width = 192;
             // 
-            // itemAvailable
+            // itemAvailabilityColumn
             // 
-            this.itemAvailable.HeaderText = "Available";
-            this.itemAvailable.Name = "itemAvailable";
-            this.itemAvailable.Width = 64;
+            this.itemAvailabilityColumn.HeaderText = "Available";
+            this.itemAvailabilityColumn.Name = "itemAvailabilityColumn";
+            this.itemAvailabilityColumn.Width = 64;
             // 
-            // itemStock
+            // itemStockColumn
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.itemStock.DefaultCellStyle = dataGridViewCellStyle3;
-            this.itemStock.HeaderText = "Stock";
-            this.itemStock.Name = "itemStock";
-            this.itemStock.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.itemStock.Width = 64;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.itemStockColumn.DefaultCellStyle = dataGridViewCellStyle1;
+            this.itemStockColumn.HeaderText = "Stock";
+            this.itemStockColumn.MaxInputLength = 2;
+            this.itemStockColumn.Name = "itemStockColumn";
+            this.itemStockColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.itemStockColumn.Width = 64;
             // 
             // blueprintTabPage
             // 
@@ -170,7 +172,7 @@
             this.blueprintTabPage.Padding = new System.Windows.Forms.Padding(3);
             this.blueprintTabPage.Size = new System.Drawing.Size(353, 185);
             this.blueprintTabPage.TabIndex = 1;
-            this.blueprintTabPage.Text = "Blueprint";
+            this.blueprintTabPage.Text = "Blueprint Set";
             this.blueprintTabPage.UseVisualStyleBackColor = true;
             // 
             // blueprintDataGridView
@@ -182,9 +184,9 @@
             this.blueprintDataGridView.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.blueprintDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.blueprintDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.blueprintName,
-            this.blueprintUnlocked,
-            this.blueprintBought});
+            this.blueprintSetColumn,
+            this.blueprintUnlockedColumn,
+            this.blueprintBoughtColumn});
             this.blueprintDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.blueprintDataGridView.Location = new System.Drawing.Point(6, 6);
             this.blueprintDataGridView.MultiSelect = false;
@@ -195,25 +197,25 @@
             this.blueprintDataGridView.Size = new System.Drawing.Size(341, 173);
             this.blueprintDataGridView.TabIndex = 0;
             // 
-            // blueprintName
+            // blueprintSetColumn
             // 
-            this.blueprintName.HeaderText = "Blueprint Set";
-            this.blueprintName.Name = "blueprintName";
-            this.blueprintName.ReadOnly = true;
-            this.blueprintName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.blueprintName.Width = 192;
+            this.blueprintSetColumn.HeaderText = "Blueprint Set";
+            this.blueprintSetColumn.Name = "blueprintSetColumn";
+            this.blueprintSetColumn.ReadOnly = true;
+            this.blueprintSetColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.blueprintSetColumn.Width = 192;
             // 
-            // blueprintUnlocked
+            // blueprintUnlockedColumn
             // 
-            this.blueprintUnlocked.HeaderText = "Unlocked";
-            this.blueprintUnlocked.Name = "blueprintUnlocked";
-            this.blueprintUnlocked.Width = 64;
+            this.blueprintUnlockedColumn.HeaderText = "Unlocked";
+            this.blueprintUnlockedColumn.Name = "blueprintUnlockedColumn";
+            this.blueprintUnlockedColumn.Width = 64;
             // 
-            // blueprintBought
+            // blueprintBoughtColumn
             // 
-            this.blueprintBought.HeaderText = "Bought";
-            this.blueprintBought.Name = "blueprintBought";
-            this.blueprintBought.Width = 64;
+            this.blueprintBoughtColumn.HeaderText = "Bought";
+            this.blueprintBoughtColumn.Name = "blueprintBoughtColumn";
+            this.blueprintBoughtColumn.Width = 64;
             // 
             // recipeTabPage
             // 
@@ -235,9 +237,9 @@
             this.recipeDataGridView.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.recipeDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.recipeDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.recipeSetName,
-            this.recipeUnlocked,
-            this.recipeBought});
+            this.recipeSetColumn,
+            this.recipeUnlockedColumn,
+            this.recipeBoughtColumn});
             this.recipeDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.recipeDataGridView.Location = new System.Drawing.Point(6, 6);
             this.recipeDataGridView.MultiSelect = false;
@@ -248,25 +250,25 @@
             this.recipeDataGridView.Size = new System.Drawing.Size(341, 173);
             this.recipeDataGridView.TabIndex = 0;
             // 
-            // recipeSetName
+            // recipeSetColumn
             // 
-            this.recipeSetName.HeaderText = "Recipe Set";
-            this.recipeSetName.Name = "recipeSetName";
-            this.recipeSetName.ReadOnly = true;
-            this.recipeSetName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.recipeSetName.Width = 192;
+            this.recipeSetColumn.HeaderText = "Recipe Set";
+            this.recipeSetColumn.Name = "recipeSetColumn";
+            this.recipeSetColumn.ReadOnly = true;
+            this.recipeSetColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.recipeSetColumn.Width = 192;
             // 
-            // recipeUnlocked
+            // recipeUnlockedColumn
             // 
-            this.recipeUnlocked.HeaderText = "Unlocked";
-            this.recipeUnlocked.Name = "recipeUnlocked";
-            this.recipeUnlocked.Width = 64;
+            this.recipeUnlockedColumn.HeaderText = "Unlocked";
+            this.recipeUnlockedColumn.Name = "recipeUnlockedColumn";
+            this.recipeUnlockedColumn.Width = 64;
             // 
-            // recipeBought
+            // recipeBoughtColumn
             // 
-            this.recipeBought.HeaderText = "Bought";
-            this.recipeBought.Name = "recipeBought";
-            this.recipeBought.Width = 64;
+            this.recipeBoughtColumn.HeaderText = "Bought";
+            this.recipeBoughtColumn.Name = "recipeBoughtColumn";
+            this.recipeBoughtColumn.Width = 64;
             // 
             // patternTabPage
             // 
@@ -288,9 +290,9 @@
             this.patternDataGridView.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.patternDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.patternDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.patternName,
-            this.patternUnlocked,
-            this.patternBought});
+            this.patternSetColumn,
+            this.patternUnlockedColumn,
+            this.patternBoughtColumn});
             this.patternDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.patternDataGridView.Location = new System.Drawing.Point(6, 6);
             this.patternDataGridView.MultiSelect = false;
@@ -301,25 +303,25 @@
             this.patternDataGridView.Size = new System.Drawing.Size(341, 173);
             this.patternDataGridView.TabIndex = 0;
             // 
-            // patternName
+            // patternSetColumn
             // 
-            this.patternName.HeaderText = "Pattern Set";
-            this.patternName.Name = "patternName";
-            this.patternName.ReadOnly = true;
-            this.patternName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.patternName.Width = 192;
+            this.patternSetColumn.HeaderText = "Pattern Set";
+            this.patternSetColumn.Name = "patternSetColumn";
+            this.patternSetColumn.ReadOnly = true;
+            this.patternSetColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.patternSetColumn.Width = 192;
             // 
-            // patternUnlocked
+            // patternUnlockedColumn
             // 
-            this.patternUnlocked.HeaderText = "Unlocked";
-            this.patternUnlocked.Name = "patternUnlocked";
-            this.patternUnlocked.Width = 64;
+            this.patternUnlockedColumn.HeaderText = "Unlocked";
+            this.patternUnlockedColumn.Name = "patternUnlockedColumn";
+            this.patternUnlockedColumn.Width = 64;
             // 
-            // patternBought
+            // patternBoughtColumn
             // 
-            this.patternBought.HeaderText = "Bought";
-            this.patternBought.Name = "patternBought";
-            this.patternBought.Width = 64;
+            this.patternBoughtColumn.HeaderText = "Bought";
+            this.patternBoughtColumn.Name = "patternBoughtColumn";
+            this.patternBoughtColumn.Width = 64;
             // 
             // animalTabPage
             // 
@@ -341,8 +343,8 @@
             this.animalDataGridView.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.animalDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.animalDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.animalName,
-            this.animalUnlocked});
+            this.animalColumn,
+            this.animalUnlockedColumn});
             this.animalDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.animalDataGridView.Location = new System.Drawing.Point(6, 6);
             this.animalDataGridView.MultiSelect = false;
@@ -353,19 +355,19 @@
             this.animalDataGridView.Size = new System.Drawing.Size(341, 173);
             this.animalDataGridView.TabIndex = 1;
             // 
-            // animalName
+            // animalColumn
             // 
-            this.animalName.HeaderText = "Animal";
-            this.animalName.Name = "animalName";
-            this.animalName.ReadOnly = true;
-            this.animalName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.animalName.Width = 192;
+            this.animalColumn.HeaderText = "Animal";
+            this.animalColumn.Name = "animalColumn";
+            this.animalColumn.ReadOnly = true;
+            this.animalColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.animalColumn.Width = 192;
             // 
-            // animalUnlocked
+            // animalUnlockedColumn
             // 
-            this.animalUnlocked.HeaderText = "Unlocked";
-            this.animalUnlocked.Name = "animalUnlocked";
-            this.animalUnlocked.Width = 64;
+            this.animalUnlockedColumn.HeaderText = "Unlocked";
+            this.animalUnlockedColumn.Name = "animalUnlockedColumn";
+            this.animalUnlockedColumn.Width = 64;
             // 
             // ShopEditingForm
             // 
@@ -375,8 +377,10 @@
             this.Controls.Add(this.shopTabControl);
             this.Controls.Add(this.shopComboBox);
             this.Controls.Add(this.shopLabel);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "ShopEditingForm";
-            this.Text = "ShopEditingForm";
+            this.Text = "Shop Editor";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ShopEditingForm_FormClosing);
             this.shopTabControl.ResumeLayout(false);
             this.itemTabPage.ResumeLayout(false);
@@ -409,19 +413,19 @@
         private System.Windows.Forms.DataGridView recipeDataGridView;
         private System.Windows.Forms.DataGridView patternDataGridView;
         private System.Windows.Forms.DataGridView animalDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn blueprintName;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn blueprintUnlocked;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn blueprintBought;
-        private System.Windows.Forms.DataGridViewTextBoxColumn recipeSetName;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn recipeUnlocked;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn recipeBought;
-        private System.Windows.Forms.DataGridViewTextBoxColumn patternName;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn patternUnlocked;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn patternBought;
-        private System.Windows.Forms.DataGridViewTextBoxColumn animalName;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn animalUnlocked;
-        private System.Windows.Forms.DataGridViewComboBoxColumn itemName;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn itemAvailable;
-        private System.Windows.Forms.DataGridViewTextBoxColumn itemStock;
+        private System.Windows.Forms.DataGridViewComboBoxColumn itemColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn itemAvailabilityColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn itemStockColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn blueprintSetColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn blueprintUnlockedColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn blueprintBoughtColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn recipeSetColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn recipeUnlockedColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn recipeBoughtColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn patternSetColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn patternUnlockedColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn patternBoughtColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn animalColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn animalUnlockedColumn;
     }
 }

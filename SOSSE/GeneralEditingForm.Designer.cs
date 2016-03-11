@@ -271,7 +271,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "GeneralEditingForm";
-            this.Text = "GeneralEditingForm";
+            this.Text = "General Editor";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GeneralEditingForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.healthNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.staminaNumericUpDown)).EndInit();

@@ -497,9 +497,15 @@ namespace SOSSE
                 case 3:
                     if ((items[e.RowIndex].Index == 0xFFFF) ||
                         (Item.BaseQuality[items[e.RowIndex].Index] == -1))
+                    {
                         e.CellStyle.BackColor = Color.LightGray;
+                        dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].ReadOnly = true;
+                    }
                     else
+                    {
                         e.CellStyle.BackColor = dataGridView.DefaultCellStyle.BackColor;
+                        dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].ReadOnly = false;
+                    }
                     break;
             }
         }

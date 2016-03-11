@@ -36,6 +36,16 @@ namespace SOSSE
             new Offsets { Item = 0x50108, Blueprint = 0x50360, Recipe = 0x503F6, Pattern = 0x5045A, Animal = 0x50478 },
             new Offsets { Item = 0x5049C, Blueprint = 0x506F4, Recipe = 0x5078A, Pattern = 0x507EE, Animal = 0x5080C },
         };
+        private struct ShopCategory
+        {
+            public const int Item = 0;
+            public const int Blueprint = 1;
+            public const int Recipe = 2;
+            public const int Pattern = 3;
+            public const int Animal = 4;
+        }
+        private bool[] isResourceLoaded = { true, false, false, false, false };
+        private int[] itemCount = { 32, 5, 8, 0, 68, 29, 39, 29, 65, 28, 7 };
         private int currentShop;
         #region Shop data
         private int[][] blueprint = 
@@ -103,35 +113,36 @@ namespace SOSSE
             DataLoaded = false;
             IsModified = false;
             Util.LoadItemNameList();
-            Util.LoadBlueprintSetNameList();
-            Util.LoadRecipeSetNameList();
-            Util.LoadPatternSetNameList();
-            Util.LoadAnimalTypeList();
             Util.LoadShopNameList();
             
-            itemDataGridView.Rows.Add(MaxShopItem);
-            blueprintDataGridView.Rows.Add(MaxShopBlueprint);
-            recipeDataGridView.Rows.Add(MaxShopRecipe);
-            patternDataGridView.Rows.Add(MaxShopPattern);
-            animalDataGridView.Rows.Add(MaxShopAnimal);
             shopComboBox.Items.AddRange(ShopNameList);
 
-            itemName.Items.Add("None");
+            itemColumn.Items.Add("None");
             for (int i = 0; i < Item.MaxItem; i++)
-                itemName.Items.Add(Item.ItemNameList[ItemEditingForm.ItemSortedList[i]]);
+                itemColumn.Items.Add(Item.ItemNameList[ItemEditingForm.ItemSortedList[i]]);
+
+            // Row must be added after adding ComboBox items to avoid bad performance
+            itemDataGridView.Rows.Add(MaxShopItem);
 
             shopComboBox.SelectedIndex = 0;
             //implicitly call shopComboBox_SelectedIndexChanged event
         }
 
+        // Load
         private void displayShopData(int shopIndex)
         {
             DataLoaded = false;
-            int localoffset;
+            if (isResourceLoaded[ShopCategory.Item]) displayItem(shopIndex);
+            if (isResourceLoaded[ShopCategory.Blueprint]) displayBlueprint(shopIndex);
+            if (isResourceLoaded[ShopCategory.Recipe]) displayRecipe(shopIndex);
+            if (isResourceLoaded[ShopCategory.Pattern]) displayPattern(shopIndex);
+            if (isResourceLoaded[ShopCategory.Animal]) displayAnimal(shopIndex);
+            DataLoaded = true;
+        }
 
-            // Item
-            localoffset = offset[shopIndex].Item;
-            
+        private void displayItem(int shopIndex)
+        {
+            int localoffset = offset[shopIndex].Item;
             for (int i = 0; i < MaxShopItem; i++)
             {
                 var row = itemDataGridView.Rows[i];
@@ -143,18 +154,32 @@ namespace SOSSE
                     row.Cells[0].Value = "None";
                     row.Cells[1].ReadOnly = true;
                     row.Cells[1].Style = MainForm.GrayCellStyle;
-                    row.Cells[2].ReadOnly = true;
-                    row.Cells[2].Style = MainForm.GrayCellStyle;
                 }
                 else
+                {
                     row.Cells[0].Value = Item.ItemNameList[itemIndex];
+                    row.Cells[1].ReadOnly = false;
+                    row.Cells[1].Style = itemAvailabilityColumn.DefaultCellStyle;
+                }
+
+                // Prevent changes to the game's original shop items.
+                if (i < itemCount[shopIndex])
+                {
+                    row.Cells[0].ReadOnly = true;
+                    row.Cells[0].Style = MainForm.GrayCellStyle;
+                }
+                else
+                {
+                    row.Cells[0].ReadOnly = false;
+                    row.Cells[0].Style = itemColumn.DefaultCellStyle;
+                }
 
                 bool avail = (MainForm.SaveData[localoffset + 0x4] & 0x1) == 0x1;
                 row.Cells[1].Value = avail;
 
                 row.Cells[2].Value = BitConverter.ToInt16(MainForm.SaveData,
                     localoffset + 0x2);
-                if (!avail)
+                if ((itemIndex == -1) || (!avail))
                 {
                     row.Cells[2].ReadOnly = true;
                     row.Cells[2].Style = MainForm.GrayCellStyle;
@@ -162,14 +187,16 @@ namespace SOSSE
                 else
                 {
                     row.Cells[2].ReadOnly = false;
-                    row.Cells[2].Style = itemDataGridView.DefaultCellStyle;
+                    row.Cells[2].Style = itemStockColumn.DefaultCellStyle;
                 }
 
                 localoffset += 0x6;
             }
+        }
 
-            // Blueprint
-            localoffset = offset[shopIndex].Blueprint;
+        private void displayBlueprint(int shopIndex)
+        {
+            int localoffset = offset[shopIndex].Blueprint;
             for (int i = 0; i < blueprint[shopIndex].Length; i++)
             {
                 var row = blueprintDataGridView.Rows[i];
@@ -184,9 +211,11 @@ namespace SOSSE
                 var row = blueprintDataGridView.Rows[i];
                 row.Cells[0].Value = row.Cells[1].Value = row.Cells[2].Value = null;
             }
+        }
 
-            // Recipe
-            localoffset = offset[shopIndex].Recipe;
+        private void displayRecipe(int shopIndex)
+        {
+            int localoffset = offset[shopIndex].Recipe;
             for (int i = 0; i < recipe[shopIndex].Length; i++)
             {
                 var row = recipeDataGridView.Rows[i];
@@ -201,9 +230,11 @@ namespace SOSSE
                 var row = recipeDataGridView.Rows[i];
                 row.Cells[0].Value = row.Cells[1].Value = row.Cells[2].Value = null;
             }
+        }
 
-            // Pattern
-            localoffset = offset[shopIndex].Pattern;
+        private void displayPattern(int shopIndex)
+        {
+            int localoffset = offset[shopIndex].Pattern;
             for (int i = 0; i < pattern[shopIndex].Length; i++)
             {
                 var row = patternDataGridView.Rows[i];
@@ -218,9 +249,11 @@ namespace SOSSE
                 var row = patternDataGridView.Rows[i];
                 row.Cells[0].Value = row.Cells[1].Value = row.Cells[2].Value = null;
             }
+        }
 
-            // Animal
-            localoffset = offset[shopIndex].Animal;
+        private void displayAnimal(int shopIndex)
+        {
+            int localoffset = offset[shopIndex].Animal;
             for (int i = 0; i < animal[shopIndex].Length; i++)
             {
                 var row = animalDataGridView.Rows[i];
@@ -235,26 +268,29 @@ namespace SOSSE
                 var row = animalDataGridView.Rows[i];
                 row.Cells[0].Value = row.Cells[1].Value = null;
             }
-
-            DataLoaded = true;
         }
         
+        // Save
         private void saveCurrentShop()
         {
-            int localoffset;
+            if (isResourceLoaded[ShopCategory.Item]) saveItem(currentShop);
+            if (isResourceLoaded[ShopCategory.Blueprint]) saveBlueprint(currentShop);
+            if (isResourceLoaded[ShopCategory.Recipe]) saveRecipe(currentShop);
+            if (isResourceLoaded[ShopCategory.Pattern]) savePattern(currentShop);
+            if (isResourceLoaded[ShopCategory.Animal]) saveAnimal(currentShop);
+        }
 
-            //Item
-            localoffset = offset[currentShop].Item;
+        private void saveItem(int shopIndex)
+        {
+            int localoffset = offset[currentShop].Item;
             for (int i = 0; i < MaxShopItem; i++)
             {
                 var row = itemDataGridView.Rows[i];
 
                 int itemIndex = Array.IndexOf(Item.ItemNameList,
                     row.Cells[0].Value.ToString());
-                MainForm.SaveData[localoffset] =
-                    (byte)(itemIndex & 0xFF);
-                MainForm.SaveData[localoffset + 0x1] =
-                    (byte)((itemIndex >> 8) & 0xFF);
+                MainForm.SaveData[localoffset] = (byte)(itemIndex & 0xFF);
+                MainForm.SaveData[localoffset + 0x1] = (byte)((itemIndex >> 8) & 0xFF);
 
                 bool itemAvailable = (bool)row.Cells[1].Value;
                 if (itemAvailable)
@@ -269,9 +305,11 @@ namespace SOSSE
 
                 localoffset += 6;
             }
+        }
 
-            // Blueprint
-            localoffset = offset[currentShop].Blueprint;
+        private void saveBlueprint(int shopIndex)
+        {
+            int localoffset = offset[currentShop].Blueprint;
             for (int i = 0; i < blueprint[currentShop].Length; i++)
             {
                 var row = blueprintDataGridView.Rows[i];
@@ -285,9 +323,11 @@ namespace SOSSE
                     MainForm.SaveData[localoffset] &= 0xFD;
                 localoffset++;
             }
+        }
 
-            // Recipe
-            localoffset = offset[currentShop].Recipe;
+        private void saveRecipe(int shopIndex)
+        {
+            int localoffset = offset[currentShop].Recipe;
             for (int i = 0; i < recipe[currentShop].Length; i++)
             {
                 var row = recipeDataGridView.Rows[i];
@@ -301,9 +341,11 @@ namespace SOSSE
                     MainForm.SaveData[localoffset] &= 0xFD;
                 localoffset++;
             }
+        }
 
-            // Pattern
-            localoffset = offset[currentShop].Pattern;
+        private void savePattern(int shopIndex)
+        {
+            int localoffset = offset[currentShop].Pattern;
             for (int i = 0; i < pattern[currentShop].Length; i++)
             {
                 var row = patternDataGridView.Rows[i];
@@ -317,9 +359,11 @@ namespace SOSSE
                     MainForm.SaveData[localoffset] &= 0xFD;
                 localoffset++;
             }
+        }
 
-            // Animal
-            localoffset = offset[currentShop].Animal;
+        private void saveAnimal(int shopIndex)
+        {
+            int localoffset = offset[currentShop].Animal;
             for (int i = 0; i < animal[currentShop].Length; i++)
             {
                 var row = animalDataGridView.Rows[i];
@@ -338,6 +382,7 @@ namespace SOSSE
             displayShopData(currentShop);
         }
 
+        // Drop a list when user click to a cell
         private void itemDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex != 0) return;
@@ -345,38 +390,60 @@ namespace SOSSE
             if (cb != null) cb.DroppedDown = true;
         }
 
+        // Commit a change after user change item in ComboBox
         private void itemDataGridView_CurrentCellDirtyStateChanged(object sender, EventArgs e)
         {
-            if (DataLoaded && itemDataGridView.CurrentCell.ColumnIndex == 0)
+            int columnIndex = itemDataGridView.CurrentCell.ColumnIndex;
+            if (DataLoaded && (columnIndex == 0 || columnIndex == 1))
                 itemDataGridView.CommitEdit(DataGridViewDataErrorContexts.Commit);
         }
 
+        // Change cells based on item
         private void itemDataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             if (!DataLoaded) return;
-            //if (!IsModified) IsModified = true;
+            var row = itemDataGridView.Rows[e.RowIndex];
             if (e.ColumnIndex == 0)
             {
-                var row = itemDataGridView.Rows[e.RowIndex];
                 int itemIndex = Array.IndexOf(Item.ItemNameList,
                     row.Cells[0].Value.ToString());
                 if (itemIndex == -1)
                 {
                     row.Cells[1].ReadOnly = true;
                     row.Cells[1].Style = MainForm.GrayCellStyle;
+                }
+                else
+                {
+                    row.Cells[1].ReadOnly = false;
+                    row.Cells[1].Style = itemAvailabilityColumn.DefaultCellStyle;
+                }
+                if ((itemIndex == -1) || (!(bool)row.Cells[1].Value))
+                {
                     row.Cells[2].ReadOnly = true;
                     row.Cells[2].Style = MainForm.GrayCellStyle;
                 }
                 else
                 {
-                    row.Cells[1].ReadOnly = false;
-                    row.Cells[1].Style = itemDataGridView.DefaultCellStyle;
                     row.Cells[2].ReadOnly = false;
-                    row.Cells[2].Style = itemDataGridView.DefaultCellStyle;
+                    row.Cells[2].Style = itemStockColumn.DefaultCellStyle;
+                }
+            }
+            if (e.ColumnIndex == 1)
+            {
+                if (!(bool)row.Cells[1].Value)
+                {
+                    row.Cells[2].ReadOnly = true;
+                    row.Cells[2].Style = MainForm.GrayCellStyle;
+                }
+                else
+                {
+                    row.Cells[2].ReadOnly = false;
+                    row.Cells[2].Style = itemStockColumn.DefaultCellStyle;
                 }
             }
         }
 
+        // Validate input value
         private void itemDataGridView_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
             if (!DataLoaded) return;
@@ -392,6 +459,51 @@ namespace SOSSE
                 }
                 else
                     cell.ErrorText = null;
+            }
+        }
+
+        // Load resource when user change tab
+        private void shopTabControl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (shopTabControl.SelectedIndex)
+            {
+                // Item resource was loaded by default
+                case ShopCategory.Blueprint:
+                    if (!isResourceLoaded[ShopCategory.Blueprint])
+                    {
+                        Util.LoadBlueprintSetNameList();
+                        isResourceLoaded[ShopCategory.Blueprint] = true;
+                        blueprintDataGridView.Rows.Add(MaxShopBlueprint);
+                        displayBlueprint(currentShop);
+                    }
+                    break;
+                case ShopCategory.Recipe:
+                    if (!isResourceLoaded[ShopCategory.Recipe])
+                    {
+                        Util.LoadRecipeSetNameList();
+                        isResourceLoaded[ShopCategory.Recipe] = true;
+                        recipeDataGridView.Rows.Add(MaxShopRecipe);
+                        displayRecipe(currentShop);
+                    }
+                    break;
+                case ShopCategory.Pattern:
+                    if (!isResourceLoaded[ShopCategory.Pattern])
+                    {
+                        Util.LoadPatternSetNameList();
+                        isResourceLoaded[ShopCategory.Pattern] = true;
+                        patternDataGridView.Rows.Add(MaxShopPattern);
+                        displayPattern(currentShop);
+                    }
+                    break;
+                case ShopCategory.Animal:
+                    if (!isResourceLoaded[ShopCategory.Animal])
+                    {
+                        Util.LoadAnimalTypeList();
+                        isResourceLoaded[ShopCategory.Animal] = true;
+                        animalDataGridView.Rows.Add(MaxShopAnimal);
+                        displayAnimal(currentShop);
+                    }
+                    break;
             }
         }
 

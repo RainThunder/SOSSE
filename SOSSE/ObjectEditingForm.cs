@@ -173,7 +173,7 @@ namespace SOSSE
                     objectDataGridView.Rows[e.RowIndex].Cells[1].Value = 1;
                     objectDataGridView.Rows[e.RowIndex].Cells[1].ReadOnly = false;
                     objectDataGridView.Rows[e.RowIndex].Cells[1].Style =
-                        objectDataGridView.DefaultCellStyle;
+                        objectQuantityColumn.DefaultCellStyle;
                 }
                 else
                 {

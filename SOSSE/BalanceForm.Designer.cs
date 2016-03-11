@@ -87,14 +87,14 @@
             this.outcome.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.outcome.Width = 96;
             // 
-            // Balance
+            // BalanceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(432, 262);
             this.Controls.Add(this.balanceDataGridView);
-            this.Name = "Balance";
-            this.Text = "Balance (Read Only)";
+            this.Name = "BalanceForm";
+            this.Text = "Balance Viewer";
             ((System.ComponentModel.ISupportInitialize)(this.balanceDataGridView)).EndInit();
             this.ResumeLayout(false);
 
