@@ -1,6 +1,6 @@
 ﻿namespace SOSSE
 {
-    partial class EventEditingForm
+    partial class EventFlagEditingForm
     {
         /// <summary>
         /// Required designer variable.

@@ -223,7 +223,7 @@ namespace SOSSE
 
         private void eventButton_Click(object sender, EventArgs e)
         {
-            new EventEditingForm().ShowDialog();
+            new EventFlagEditingForm().ShowDialog();
         }
 
         private void aboutButton_Click(object sender, EventArgs e)

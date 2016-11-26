@@ -135,10 +135,10 @@ namespace SOSSE
 
         public static void LoadEventFlag()
         {
-            if (EventEditingForm.EventFlagList == null)
+            if (EventFlagEditingForm.EventFlagList == null)
             {
                 string txt = Properties.Resources.ResourceManager.GetString("EventFlag");
-                EventEditingForm.EventFlagList = txt.Replace("\r", "").Split(new[] { '\n' });
+                EventFlagEditingForm.EventFlagList = txt.Replace("\r", "").Split(new[] { '\n' });
             }
         }
     }

@@ -92,11 +92,11 @@
     <Compile Include="ConquestEditingForm.Designer.cs">
       <DependentUpon>ConquestEditingForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="EventEditingForm.cs">
+    <Compile Include="EventFlagEditingForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EventEditingForm.Designer.cs">
-      <DependentUpon>EventEditingForm.cs</DependentUpon>
+    <Compile Include="EventFlagEditingForm.Designer.cs">
+      <DependentUpon>EventFlagEditingForm.cs</DependentUpon>
     </Compile>
     <Compile Include="GeneralEditingForm.cs">
       <SubType>Form</SubType>
@@ -177,8 +177,8 @@
     <EmbeddedResource Include="ConquestEditingForm.resx">
       <DependentUpon>ConquestEditingForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EventEditingForm.resx">
-      <DependentUpon>EventEditingForm.cs</DependentUpon>
+    <EmbeddedResource Include="EventFlagEditingForm.resx">
+      <DependentUpon>EventFlagEditingForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GeneralEditingForm.resx">
       <DependentUpon>GeneralEditingForm.cs</DependentUpon>
